@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Sort, Filter, View } from '~/types';
 import * as S from './index.style';
+import CardTable from '~/components/CardTable';
+import ListTable from '~/components/ListTable';
 import TableHeader from '~/components/TableHeader';
 
 const ListPage = () => {
@@ -21,7 +23,7 @@ const ListPage = () => {
         inputKeyword={inputKeyword}
         setInputKeyword={setInputKeyword}
       />
-      {/* {view === 'LIST' ? <ListTable /> : <CardTable />} */}
+      {view === 'LIST' ? <ListTable /> : <CardTable />}
     </S.Container>
   );
 };
