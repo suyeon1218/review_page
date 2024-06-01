@@ -1,5 +1,5 @@
 import { HamburgerIcon } from '@chakra-ui/icons';
-import { Checkbox, Menu, MenuItem, MenuList, Tooltip } from '@chakra-ui/react';
+import { Checkbox, Menu, MenuList, Tooltip } from '@chakra-ui/react';
 import { MouseEvent, useMemo } from 'react';
 import { MENU_OPTIONS } from '~/constants';
 import { Filter } from '~/types';
@@ -45,7 +45,7 @@ const MenuFilter = ({ value, onChange }: MenuFilterProps) => {
       <MenuList>
         {Object.entries(MENU_OPTIONS.CATEGORY_FILTER).map(
           ([menuKey, menuValue]) => (
-            <MenuItem
+            <S.StyledMenuItem
               data-menu-key={menuKey}
               onClick={handleClickMenu}
               key={menuKey}>
@@ -54,7 +54,7 @@ const MenuFilter = ({ value, onChange }: MenuFilterProps) => {
                 isChecked={isFilterKey(menuKey) && selectedFilter.has(menuKey)}
               />
               <div>{menuValue}</div>
-            </MenuItem>
+            </S.StyledMenuItem>
           )
         )}
       </MenuList>

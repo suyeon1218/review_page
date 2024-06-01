@@ -1,5 +1,5 @@
 import { ViewIcon } from '@chakra-ui/icons';
-import { Menu, MenuItem, MenuList, Radio, Tooltip } from '@chakra-ui/react';
+import { Menu, MenuList, Radio, Tooltip } from '@chakra-ui/react';
 import { MouseEvent } from 'react';
 import { MENU_OPTIONS } from '~/constants';
 import { View } from '~/types';
@@ -34,7 +34,7 @@ const MenuView = ({ value, onChange }: MenuViewProps) => {
       </Tooltip>
       <MenuList>
         {Object.entries(MENU_OPTIONS.VIEW_TYPE).map(([menuKey, menuValue]) => (
-          <MenuItem
+          <S.StyledMenuItem
             data-menu-key={menuKey}
             onClick={handleClickMenu}
             key={menuKey}>
@@ -43,7 +43,7 @@ const MenuView = ({ value, onChange }: MenuViewProps) => {
               isChecked={menuKey === value}
             />
             <div>{menuValue}</div>
-          </MenuItem>
+          </S.StyledMenuItem>
         ))}
       </MenuList>
     </Menu>

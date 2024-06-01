@@ -1,4 +1,4 @@
-import { MenuButton } from '@chakra-ui/react';
+import { MenuButton, MenuItem } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 export const StyledMenuButton = styled(MenuButton)`
@@ -13,4 +13,9 @@ export const StyledMenuButton = styled(MenuButton)`
   &:hover {
     background-color: ${({ theme }) => theme.colors.gray[200]};
   }
+`;
+
+export const StyledMenuItem = styled(MenuItem)`
+  display: flex;
+  gap: 5px;
 `;
