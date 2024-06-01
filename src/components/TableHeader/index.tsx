@@ -1,25 +1,42 @@
-import { ViewType } from '~/types';
-import ViewMenu from '../ViewMenu';
+import { AddIcon } from '@chakra-ui/icons';
+import { Sort, Filter, View } from '~/types';
+
+import MenuFilter from '../MenuFilter';
+import MenuSort from '../MenuSort';
+import MenuView from '../MenuView';
 import * as S from './index.style';
 
 interface TalbeHeaderProps {
-  view: ViewType;
-  onChange?: (props: ViewType) => void;
+  view: View;
+  setView: (view: View) => void;
+  filter: Filter[];
+  setFilter: (filter: Filter[]) => void;
+  sort: Sort | undefined;
+  setSort: (sort: Sort | undefined) => void;
 }
 
-const TableHeader = ({ view, onChange }: TalbeHeaderProps) => {
+const TableHeader = ({
+  view,
+  setView,
+  filter,
+  setFilter,
+  sort,
+  setSort,
+}: TalbeHeaderProps) => {
   return (
     <S.Container>
       <S.LeftSideContainer>
         <S.TableTitle>영화 리뷰</S.TableTitle>
       </S.LeftSideContainer>
       <S.RightSideContainer>
-        <ViewMenu
-          view={view}
-          onChange={onChange}
+        <MenuFilter />
+        <MenuSort />
+        <MenuView
+          value={view}
+          onChange={setView}
         />
         <S.WriteButtonContainer>
-          <S.WriteButton>작성하기</S.WriteButton>
+          <AddIcon />
         </S.WriteButtonContainer>
       </S.RightSideContainer>
     </S.Container>
