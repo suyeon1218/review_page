@@ -5,6 +5,7 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
+  Tooltip,
 } from '@chakra-ui/react';
 import { MouseEvent, useMemo } from 'react';
 import { MENU_OPTIONS } from '~/constants';
@@ -44,7 +45,9 @@ const MenuFilter = ({ value, onChange }: MenuFilterProps) => {
 
   return (
     <Menu closeOnSelect={false}>
-      <MenuButton>{<HamburgerIcon />}</MenuButton>
+      <Tooltip label='필터'>
+        <MenuButton>{<HamburgerIcon />}</MenuButton>
+      </Tooltip>
       <MenuList>
         {Object.entries(MENU_OPTIONS.CATEGORY_FILTER).map(
           ([menuKey, menuValue]) => (

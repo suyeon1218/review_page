@@ -1,5 +1,12 @@
 import { ViewIcon } from '@chakra-ui/icons';
-import { Menu, MenuButton, MenuItem, MenuList, Radio } from '@chakra-ui/react';
+import {
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Radio,
+  Tooltip,
+} from '@chakra-ui/react';
 import { MouseEvent } from 'react';
 import { MENU_OPTIONS } from '~/constants';
 import { View } from '~/types';
@@ -28,7 +35,9 @@ const MenuView = ({ value, onChange }: MenuViewProps) => {
 
   return (
     <Menu closeOnSelect={false}>
-      <MenuButton>{<ViewIcon />}</MenuButton>
+      <Tooltip label='보기 변경'>
+        <MenuButton>{<ViewIcon />}</MenuButton>
+      </Tooltip>
       <MenuList>
         {Object.entries(MENU_OPTIONS.VIEW_TYPE).map(([menuKey, menuValue]) => (
           <MenuItem

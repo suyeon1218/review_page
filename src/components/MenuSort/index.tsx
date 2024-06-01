@@ -1,5 +1,12 @@
 import { UpDownIcon } from '@chakra-ui/icons';
-import { Menu, MenuButton, MenuItem, MenuList, Radio } from '@chakra-ui/react';
+import {
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Radio,
+  Tooltip,
+} from '@chakra-ui/react';
 import { MouseEvent } from 'react';
 import { MENU_OPTIONS } from '~/constants';
 import { Sort } from '~/types';
@@ -28,7 +35,9 @@ const MenuSort = ({ value, onChange }: MenuSortProps) => {
 
   return (
     <Menu closeOnSelect={false}>
-      <MenuButton>{<UpDownIcon />}</MenuButton>
+      <Tooltip label='정렬'>
+        <MenuButton>{<UpDownIcon />}</MenuButton>
+      </Tooltip>
       <MenuList>
         {Object.entries(MENU_OPTIONS.DATE_SORT).map(([menuKey, menuValue]) => (
           <MenuItem
