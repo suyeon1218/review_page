@@ -17,7 +17,7 @@ const MenuView = ({ value, onChange }: MenuViewProps) => {
   const handleClickMenu = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
-    if (event.target instanceof HTMLElement) {
+    if (event.target instanceof Element) {
       const { menuKey } = event.currentTarget.dataset;
 
       if (menuKey && isViewKey(menuKey)) {
@@ -27,7 +27,7 @@ const MenuView = ({ value, onChange }: MenuViewProps) => {
   };
 
   return (
-    <Menu>
+    <Menu closeOnSelect={false}>
       <MenuButton>{<ViewIcon />}</MenuButton>
       <MenuList>
         {Object.entries(MENU_OPTIONS.VIEW_TYPE).map(([menuKey, menuValue]) => (

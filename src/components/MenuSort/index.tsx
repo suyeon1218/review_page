@@ -17,7 +17,7 @@ const MenuSort = ({ value, onChange }: MenuSortProps) => {
   const handleClickMenu = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
-    if (event.target instanceof HTMLElement) {
+    if (event.target instanceof Element) {
       const { menuKey } = event.currentTarget.dataset;
 
       if (menuKey && isSortKey(menuKey)) {
@@ -27,7 +27,7 @@ const MenuSort = ({ value, onChange }: MenuSortProps) => {
   };
 
   return (
-    <Menu>
+    <Menu closeOnSelect={false}>
       <MenuButton>{<UpDownIcon />}</MenuButton>
       <MenuList>
         {Object.entries(MENU_OPTIONS.DATE_SORT).map(([menuKey, menuValue]) => (
