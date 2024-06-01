@@ -9,6 +9,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 16px;
+  position: relative;
 `;
 
 export const LeftSideContainer = styled.div`
@@ -20,6 +21,13 @@ export const LeftSideContainer = styled.div`
 export const TableTitle = styled.div`
   font-size: 24px;
   font-weight: bold;
+`;
+
+export const CenterContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const RightSideContainer = styled.div`

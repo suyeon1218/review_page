@@ -7,6 +7,7 @@ const ListPage = () => {
   const [view, setView] = useState<View>('LIST');
   const [filter, setFilter] = useState<Filter[]>([]);
   const [sort, setSort] = useState<Sort>('DATE_ASCENDING');
+  const [inputKeyword, setInputKeyword] = useState('');
 
   return (
     <S.Container>
@@ -17,6 +18,8 @@ const ListPage = () => {
         setFilter={setFilter}
         sort={sort}
         setSort={setSort}
+        inputKeyword={inputKeyword}
+        setInputKeyword={setInputKeyword}
       />
       {/* {view === 'list' ? <ListTable /> : <CardTable />} */}
     </S.Container>

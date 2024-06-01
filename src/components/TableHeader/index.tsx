@@ -5,6 +5,7 @@ import { Sort, Filter, View } from '~/types';
 import MenuFilter from '../MenuFilter';
 import MenuSort from '../MenuSort';
 import MenuView from '../MenuView';
+import SearchBar from '../SearchBar';
 import * as S from './index.style';
 
 interface TalbeHeaderProps {
@@ -14,6 +15,8 @@ interface TalbeHeaderProps {
   setFilter: (filter: Filter[]) => void;
   sort: Sort;
   setSort: (sort: Sort) => void;
+  inputKeyword: string;
+  setInputKeyword: (keyword: string) => void;
 }
 
 const TableHeader = ({
@@ -23,12 +26,20 @@ const TableHeader = ({
   setFilter,
   sort,
   setSort,
+  inputKeyword,
+  setInputKeyword,
 }: TalbeHeaderProps) => {
   return (
     <S.Container>
       <S.LeftSideContainer>
         <S.TableTitle>영화 리뷰</S.TableTitle>
       </S.LeftSideContainer>
+      <S.CenterContainer>
+        <SearchBar
+          value={inputKeyword}
+          onChange={setInputKeyword}
+        />
+      </S.CenterContainer>
       <S.RightSideContainer>
         <MenuFilter
           value={filter}
