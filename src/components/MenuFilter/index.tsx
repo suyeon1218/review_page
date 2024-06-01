@@ -1,15 +1,9 @@
 import { HamburgerIcon } from '@chakra-ui/icons';
-import {
-  Checkbox,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Tooltip,
-} from '@chakra-ui/react';
+import { Checkbox, Menu, MenuItem, MenuList, Tooltip } from '@chakra-ui/react';
 import { MouseEvent, useMemo } from 'react';
 import { MENU_OPTIONS } from '~/constants';
 import { Filter } from '~/types';
+import * as S from './index.style';
 
 interface MenuFilterProps {
   value: Filter[];
@@ -46,7 +40,7 @@ const MenuFilter = ({ value, onChange }: MenuFilterProps) => {
   return (
     <Menu closeOnSelect={false}>
       <Tooltip label='필터'>
-        <MenuButton>{<HamburgerIcon />}</MenuButton>
+        <S.StyledMenuButton>{<HamburgerIcon />}</S.StyledMenuButton>
       </Tooltip>
       <MenuList>
         {Object.entries(MENU_OPTIONS.CATEGORY_FILTER).map(
