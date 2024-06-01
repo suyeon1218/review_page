@@ -1,6 +1,7 @@
 import { AddIcon } from '@chakra-ui/icons';
 import { Sort, Filter, View } from '~/types';
 
+import MenuFilter from '../MenuFilter';
 import MenuSort from '../MenuSort';
 import MenuView from '../MenuView';
 import * as S from './index.style';
@@ -28,6 +29,10 @@ const TableHeader = ({
         <S.TableTitle>영화 리뷰</S.TableTitle>
       </S.LeftSideContainer>
       <S.RightSideContainer>
+        <MenuFilter
+          value={filter}
+          onChange={setFilter}
+        />
         <MenuSort
           value={sort}
           onChange={setSort}
