@@ -1,19 +1,45 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true },
+  env: {
+    browser: true,
+    es2021: true,
+  },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts'],
+  plugins: ['react-refresh', 'import', '@emotion'],
   parser: '@typescript-eslint/parser',
   parserOptions: { tsconfigRootDir: __dirname },
-  plugins: ['react-refresh', '@emotion'],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
+    ],
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'type',
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+          'unknown',
+        ],
+        pathGroups: [
+          {
+            pattern: '~/*',
+            group: 'internal',
+            position: 'after',
+          },
+        ],
+        alphabetize: { order: 'asc', caseInsensitive: true },
+      },
     ],
   },
 };
