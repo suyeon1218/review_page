@@ -10,7 +10,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts'],
-  plugins: ['react-refresh', 'import', '@emotion'],
+  plugins: ['react-refresh', 'import', '@emotion', '@tanstack/query'],
   parser: '@typescript-eslint/parser',
   parserOptions: { tsconfigRootDir: __dirname },
   rules: {
