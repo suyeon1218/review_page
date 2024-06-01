@@ -6,7 +6,7 @@ import TableHeader from '~/components/TableHeader';
 const ListPage = () => {
   const [view, setView] = useState<View>('LIST');
   const [filter, setFilter] = useState<Filter[]>([]);
-  const [sort, setSort] = useState<Sort | undefined>(undefined);
+  const [sort, setSort] = useState<Sort>('DATE_ASCENDING');
 
   return (
     <S.Container>
