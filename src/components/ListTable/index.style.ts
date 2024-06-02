@@ -26,11 +26,22 @@ export const ListBody = styled(CardHeader)`
   justify-content: space-between;
 `;
 
+export const LeftSideContainer = styled.div``;
+
+export const RightSideContainer = styled.div`
+  height: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+`;
+
 export const ListTitle = styled.div``;
 
 export const ListCategory = styled(Badge)`
+  width: 100px;
   font-weight: normal;
   border-radius: 5px;
   padding: 2px 10px;
   font-size: 16px;
+  text-align: center;
 `;

@@ -1,5 +1,6 @@
 import { BADEG_COLOR } from '~/constants';
 import { postAPI } from '~/service';
+import Rating from '../Rating';
 import * as S from './index.style';
 import useFilterPost from '~/hooks/useFilterPost';
 import useSortPost from '~/hooks/useSortPost';
@@ -16,12 +17,13 @@ const CardTable = () => {
   return (
     <S.Container>
       {sortedPosts.map((post) => {
-        const { id, title, category, content } = post;
+        const { id, title, category, content, rating } = post;
 
         return (
           <S.StyledCard key={id}>
             <S.StyledCardHeader>
               <S.CardTitle>{title}</S.CardTitle>
+              <Rating value={rating} />
               <S.CardCategory colorScheme={BADEG_COLOR[category]}>
                 {category}
               </S.CardCategory>

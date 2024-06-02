@@ -19,7 +19,7 @@ export const Container = styled.div`
 
 export const StyledCard = styled(Card)`
   width: 100%;
-  height: 200px;
+  height: 230px;
 
   &:hover {
     box-shadow: 3px 3px 10px ${({ theme }) => theme.colors.gray[200]};
@@ -27,6 +27,9 @@ export const StyledCard = styled(Card)`
 `;
 
 export const StyledCardHeader = styled(CardHeader)`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray[100]};
 `;
 
@@ -36,9 +39,12 @@ export const CardTitle = styled.div`
 
 export const CardCategory = styled(Badge)`
   border-radius: 5px;
+  width: fit-content;
 `;
 
-export const StyledCardBody = styled(CardBody)``;
+export const StyledCardBody = styled(CardBody)`
+  padding: 20px;
+`;
 
 export const CardContent = styled.div`
   display: -webkit-box;
