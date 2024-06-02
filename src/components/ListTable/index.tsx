@@ -1,16 +1,18 @@
 import { BADEG_COLOR } from '~/constants';
 import { postAPI } from '~/service';
 import * as S from './index.style';
+import useFilterPost from '~/hooks/useFilterPost';
 
 const ListTable = () => {
   const { data: posts } = postAPI.useGetPosts();
+  const filteredPosts = useFilterPost(posts);
 
-  if (posts === undefined) {
+  if (filteredPosts === undefined) {
     return <div></div>;
   }
   return (
     <S.Container>
-      {posts.map((post) => {
+      {filteredPosts.map((post) => {
         const { id, title, category } = post;
         return (
           <S.List key={id}>
