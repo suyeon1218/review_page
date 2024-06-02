@@ -41,7 +41,7 @@ export const RightSideContainer = styled.div`
 `;
 
 export const WriteButtonContainer = styled.div`
-  width: 30px;
+  min-width: 30px;
   height: 30px;
   display: flex;
   justify-content: center;
