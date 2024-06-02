@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 
 export const StyledCard = styled(Card)`
-  min-width: 250px;
+  width: 250px;
   height: 200px;
 
   &:hover {

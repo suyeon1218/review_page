@@ -10,15 +10,15 @@ const CardTable = () => {
 
   return (
     <S.Container>
-      {
-        <S.StyledCard>
+      {posts.map((post) => (
+        <S.StyledCard key={post.id}>
           <S.StyledCardHeader>
-            <S.CardTitle>{posts[0].title}</S.CardTitle>
-            <S.CardCategory>{posts[0].category}</S.CardCategory>
+            <S.CardTitle>{post.title}</S.CardTitle>
+            <S.CardCategory>{post.category}</S.CardCategory>
           </S.StyledCardHeader>
-          <S.StyledCardBody>{posts[0].content}</S.StyledCardBody>
+          <S.StyledCardBody>{post.content}</S.StyledCardBody>
         </S.StyledCard>
-      }
+      ))}
     </S.Container>
   );
 };

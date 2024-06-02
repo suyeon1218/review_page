@@ -9,14 +9,14 @@ const ListTable = () => {
   }
   return (
     <S.Container>
-      <S.List>
-        <S.ListBody>
-          <S.ListTitle>{posts[0].title}</S.ListTitle>
-          <S.ListCategory colorScheme='blue'>
-            {posts[0].category}
-          </S.ListCategory>
-        </S.ListBody>
-      </S.List>
+      {posts.map((post) => (
+        <S.List key={post.id}>
+          <S.ListBody>
+            <S.ListTitle>{post.title}</S.ListTitle>
+            <S.ListCategory colorScheme='blue'>{post.category}</S.ListCategory>
+          </S.ListBody>
+        </S.List>
+      ))}
     </S.Container>
   );
 };
