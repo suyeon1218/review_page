@@ -1,2 +1,2 @@
-export { default as DetailPage } from './DetailPage';
-export { default as ListPage } from './ListPage';
+export { default as PostDetailPage } from './PostDetailPage';
+export { default as PostListPage } from './PostListPage';

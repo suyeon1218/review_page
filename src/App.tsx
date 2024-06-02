@@ -1,5 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { PostListPage, DetailPage } from './pages';
+import { PostListPage, PostDetailPage } from './pages';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
           element={<PostListPage />}></Route>
         <Route
           path='/posts/:id'
-          element={<DetailPage />}></Route>
+          element={<PostDetailPage />}></Route>
       </Routes>
     </Router>
   );

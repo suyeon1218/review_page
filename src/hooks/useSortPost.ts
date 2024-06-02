@@ -7,10 +7,16 @@ const useSortPost = (posts: Post[] | undefined) => {
   const { sort } = useSelector((state: RootState) => state.sort);
   const sortedPosts = posts ? copy.copyArray(posts) : undefined;
 
-  if (sortedPosts && sort === 'DATE_DESCENDING') {
-    sortedPosts.sort((a, b) => {
-      return a.date < b.date ? 1 : -1;
-    });
+  if (sortedPosts) {
+    if (sort === 'DATE_DESCENDING') {
+      sortedPosts.sort((a, b) => {
+        return a.date < b.date ? 1 : -1;
+      });
+    } else if (sort === 'RATING_ASCENDING') {
+      sortedPosts.sort((a, b) => a.rating - b.rating);
+    } else if (sort === 'RATING_DESCENDING') {
+      sortedPosts.sort((a, b) => b.rating - a.rating);
+    }
   }
 
   return sortedPosts;
