@@ -17,7 +17,7 @@ const SearchBar = () => {
 
   return (
     <S.StyledInput
-      placeholder='키워드를 입력해보세요.'
+      placeholder='제목으로 리뷰를 검색해보세요!'
       value={keyword}
       size={'md'}
       onChange={handleChangeInput}
