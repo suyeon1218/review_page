@@ -7,6 +7,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 20px auto;
+  cursor: pointer;
 `;
 
 export const List = styled(Card)`
