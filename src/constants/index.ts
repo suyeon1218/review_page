@@ -1,6 +1,6 @@
 export const DATE_SORT = Object.freeze({
   DATE_ASCENDING: '날짜 오름차순',
-  DATE_ESCENDING: '날짜 내림차순',
+  DATE_DESCENDING: '날짜 내림차순',
 });
 
 export const MOVIE_CATEGORY = Object.freeze({
