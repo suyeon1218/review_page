@@ -1,14 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
-import { AxiosResponse } from 'axios';
 import { Post } from '~/types';
 import { GET } from '../api/request';
 
 const postAPI = {
-  useGetPost: () => {
+  useGetPosts: () => {
     return useQuery({
       queryKey: ['allPost'],
       queryFn: async () => {
-        const response: AxiosResponse<Post[]> | undefined = await GET('/posts');
+        const response = await GET<Post[]>('/posts');
 
         return response;
       },
@@ -18,9 +17,7 @@ const postAPI = {
     return useQuery({
       queryKey: ['post'],
       queryFn: async () => {
-        const response: AxiosResponse<Post> | undefined = await GET(
-          `posts/${id}`
-        );
+        const response = await GET<Post>(`posts/${id}`);
 
         return response;
       },
