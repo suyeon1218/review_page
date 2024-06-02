@@ -15,7 +15,7 @@ export interface Post {
   id: string;
   title: string;
   content: string;
-  category: MovieCategory[];
+  category: MovieCategory;
   date: Date;
   comment: Comment[];
 }

@@ -1,3 +1,4 @@
+import { BADEG_COLOR } from '~/constants';
 import { postAPI } from '~/service';
 import * as S from './index.style';
 
@@ -10,17 +11,23 @@ const CardTable = () => {
 
   return (
     <S.Container>
-      {posts.map((post) => (
-        <S.StyledCard key={post.id}>
-          <S.StyledCardHeader>
-            <S.CardTitle>{post.title}</S.CardTitle>
-            <S.CardCategory>{post.category}</S.CardCategory>
-          </S.StyledCardHeader>
-          <S.StyledCardBody>
-            <S.CardContent>{post.content}</S.CardContent>
-          </S.StyledCardBody>
-        </S.StyledCard>
-      ))}
+      {posts.map((post) => {
+        const { id, title, category, content } = post;
+
+        return (
+          <S.StyledCard key={id}>
+            <S.StyledCardHeader>
+              <S.CardTitle>{title}</S.CardTitle>
+              <S.CardCategory colorScheme={BADEG_COLOR[category]}>
+                {category}
+              </S.CardCategory>
+            </S.StyledCardHeader>
+            <S.StyledCardBody>
+              <S.CardContent>{content}</S.CardContent>
+            </S.StyledCardBody>
+          </S.StyledCard>
+        );
+      })}
     </S.Container>
   );
 };

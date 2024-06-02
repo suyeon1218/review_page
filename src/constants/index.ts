@@ -26,3 +26,17 @@ export const MENU_OPTIONS = Object.freeze({
   CATEGORY_FILTER: MOVIE_CATEGORY,
   VIEW_TYPE,
 });
+
+export const BADEG_COLOR: Record<keyof typeof MOVIE_CATEGORY, string> =
+  Object.freeze({
+    ROMANCE: 'red',
+    COMIC: 'orange',
+    HORROR: 'yellow',
+    ACTION: 'green',
+    ANIMATION: 'blue',
+    SF: 'purple',
+    THRILLER: 'gray',
+    SPORT: 'cyan',
+    FANTASY: 'pink',
+    MUSIC: 'teal',
+  });
