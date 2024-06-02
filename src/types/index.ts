@@ -16,7 +16,7 @@ export interface Post {
   title: string;
   content: string;
   category: MovieCategory;
-  date: Date;
+  date: string;
   author: string;
   rating: 0 | 1 | 2 | 3 | 4 | 5;
   comment: Comment[];
@@ -26,6 +26,6 @@ export interface Comment {
   id: string;
   content: string;
   author: string;
-  date: Date;
+  date: string;
   like: number;
 }
