@@ -10,7 +10,7 @@ export const StyledBadge = styled(Badge)<StyledBadgeProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2px;
   border-radius: 5px;
+  padding: 2px 5px;
   width: ${({ isFullWidth }) => (isFullWidth ? '100px' : 'fit-content')};
 `;
