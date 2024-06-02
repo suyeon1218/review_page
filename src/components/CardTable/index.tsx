@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { postAPI } from '~/service';
 import CategoryBadge from '../CategoryBadge';
 import Rating from '../Rating';
@@ -21,14 +22,16 @@ const CardTable = () => {
 
         return (
           <S.StyledCard key={id}>
-            <S.StyledCardHeader>
-              <S.CardTitle>{title}</S.CardTitle>
-              <Rating value={rating} />
-              <CategoryBadge type={category} />
-            </S.StyledCardHeader>
-            <S.StyledCardBody>
-              <S.CardContent>{content}</S.CardContent>
-            </S.StyledCardBody>
+            <Link to={`/posts/${id}`}>
+              <S.StyledCardHeader>
+                <S.CardTitle>{title}</S.CardTitle>
+                <Rating value={rating} />
+                <CategoryBadge type={category} />
+              </S.StyledCardHeader>
+              <S.StyledCardBody>
+                <S.CardContent>{content}</S.CardContent>
+              </S.StyledCardBody>
+            </Link>
           </S.StyledCard>
         );
       })}
