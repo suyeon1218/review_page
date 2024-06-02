@@ -1,9 +1,9 @@
-import PostDetailHeader from '~/components/PostDetailHeader';
+import GoBack from '~/components/GoBack';
 
 const PostDetailPage = () => {
   return (
     <div>
-      <PostDetailHeader />
+      <GoBack />
     </div>
   );
 };

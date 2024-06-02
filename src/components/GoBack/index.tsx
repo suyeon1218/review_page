@@ -2,7 +2,7 @@ import { ArrowBackIcon } from '@chakra-ui/icons';
 import { useNavigate } from 'react-router-dom';
 import * as S from './index.style';
 
-const PostDetailHeader = () => {
+const GoBack = () => {
   const navigate = useNavigate();
 
   return (
@@ -16,4 +16,4 @@ const PostDetailHeader = () => {
   );
 };
 
-export default PostDetailHeader;
+export default GoBack;
