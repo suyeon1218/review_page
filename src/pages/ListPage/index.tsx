@@ -23,7 +23,9 @@ const ListPage = () => {
         inputKeyword={inputKeyword}
         setInputKeyword={setInputKeyword}
       />
-      {view === 'LIST' ? <ListTable /> : <CardTable />}
+      <S.TableContainer>
+        {view === 'LIST' ? <ListTable /> : <CardTable />}
+      </S.TableContainer>
     </S.Container>
   );
 };

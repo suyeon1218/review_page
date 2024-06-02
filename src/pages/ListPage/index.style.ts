@@ -7,3 +7,8 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+export const TableContainer = styled.div`
+  width: 100%;
+  overflow-x: hidden;
+`;

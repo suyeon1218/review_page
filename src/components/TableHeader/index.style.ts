@@ -2,32 +2,31 @@ import { Button } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-  min-width: 768px;
   width: 90%;
-  height: 80px;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gray[100]};
+  min-height: 80px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray[200]};
   display: flex;
   justify-content: space-between;
-  font-size: 16px;
-  position: relative;
+  padding: 10px;
+
+  @media screen and (max-width: 768px) {
+    width: 100vw;
+    flex-direction: column;
+    gap: 10px;
+  }
 `;
 
 export const LeftSideContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 `;
 
 export const TableTitle = styled.div`
   font-size: 24px;
+  flex-shrink: 0;
   font-weight: bold;
-`;
-
-export const CenterContainer = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 `;
 
 export const RightSideContainer = styled.div`
@@ -35,6 +34,10 @@ export const RightSideContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+
+  @media screen and (max-width: 768px) {
+    justify-content: flex-end;
+  }
 `;
 
 export const WriteButtonContainer = styled.div`

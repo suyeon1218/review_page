@@ -13,6 +13,10 @@ export const List = styled(Card)`
   width: 70%;
   box-shadow: none;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray[100]};
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const ListBody = styled(CardHeader)`

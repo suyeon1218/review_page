@@ -34,13 +34,11 @@ const TableHeader = ({
       <S.LeftSideContainer>
         <S.TableTitle>영화 리뷰</S.TableTitle>
       </S.LeftSideContainer>
-      <S.CenterContainer>
+      <S.RightSideContainer>
         <SearchBar
           value={inputKeyword}
           onChange={setInputKeyword}
         />
-      </S.CenterContainer>
-      <S.RightSideContainer>
         <MenuFilter
           value={filter}
           onChange={setFilter}

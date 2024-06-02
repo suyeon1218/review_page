@@ -16,7 +16,9 @@ const CardTable = () => {
             <S.CardTitle>{post.title}</S.CardTitle>
             <S.CardCategory>{post.category}</S.CardCategory>
           </S.StyledCardHeader>
-          <S.StyledCardBody>{post.content}</S.StyledCardBody>
+          <S.StyledCardBody>
+            <S.CardContent>{post.content}</S.CardContent>
+          </S.StyledCardBody>
         </S.StyledCard>
       ))}
     </S.Container>
