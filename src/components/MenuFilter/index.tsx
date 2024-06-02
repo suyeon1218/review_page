@@ -1,14 +1,11 @@
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { Checkbox, Menu, MenuList, Tooltip } from '@chakra-ui/react';
 import { MouseEvent, useMemo } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { MENU_OPTIONS } from '~/constants';
+import { RootState, setCategory } from '~/store';
 import { Filter } from '~/types';
 import * as S from './index.style';
-
-interface MenuFilterProps {
-  value: Filter[];
-  onChange: (value: Filter[]) => void;
-}
 
 function isFilterKey(key: string): key is Filter {
   return Object.keys(MENU_OPTIONS.CATEGORY_FILTER).some(
@@ -16,10 +13,14 @@ function isFilterKey(key: string): key is Filter {
   );
 }
 
-const MenuFilter = ({ value, onChange }: MenuFilterProps) => {
+const MenuFilter = () => {
+  const { category } = useSelector((state: RootState) => state.filter);
+  const dispatch = useDispatch();
+
   const selectedFilter = useMemo(() => {
-    return new Set(value);
-  }, [value]);
+    return new Set(category);
+  }, [category]);
+
   const handleClickMenu = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
@@ -32,7 +33,7 @@ const MenuFilter = ({ value, onChange }: MenuFilterProps) => {
         } else {
           selectedFilter.add(menuKey);
         }
-        onChange([...selectedFilter]);
+        dispatch(setCategory({ category: [...selectedFilter] }));
       }
     }
   };

@@ -1,24 +1,24 @@
 import { ChangeEvent } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, setKeyword } from '~/store';
 import * as S from './index.style';
 
-interface SearchBarProps {
-  value: string;
-  onChange: (value: string) => void;
-}
+const SearchBar = () => {
+  const { keyword } = useSelector((state: RootState) => state.filter);
+  const dispatch = useDispatch();
 
-const SearchBar = ({ value, onChange }: SearchBarProps) => {
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target instanceof Element) {
       const { value } = event.target;
 
-      onChange(value);
+      dispatch(setKeyword({ keyword: value }));
     }
   };
 
   return (
     <S.StyledInput
       placeholder='키워드를 입력해보세요.'
-      value={value}
+      value={keyword}
       size={'md'}
       onChange={handleChangeInput}
     />

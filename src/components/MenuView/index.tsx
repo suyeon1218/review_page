@@ -1,20 +1,21 @@
 import { ViewIcon } from '@chakra-ui/icons';
 import { Menu, MenuList, Radio, Tooltip } from '@chakra-ui/react';
 import { MouseEvent } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { MENU_OPTIONS } from '~/constants';
+import { RootState, setView } from '~/store';
 import { View } from '~/types';
 import * as S from './index.style';
-
-interface MenuViewProps {
-  value: View;
-  onChange: (value: View) => void;
-}
 
 function isViewKey(key: string): key is View {
   return Object.keys(MENU_OPTIONS.VIEW_TYPE).some((viewKey) => viewKey === key);
 }
 
-const MenuView = ({ value, onChange }: MenuViewProps) => {
+const MenuView = () => {
+  const { view } = useSelector((state: RootState) => state.view);
+  const dispatch = useDispatch();
+
   const handleClickMenu = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
@@ -22,7 +23,7 @@ const MenuView = ({ value, onChange }: MenuViewProps) => {
       const { menuKey } = event.currentTarget.dataset;
 
       if (menuKey && isViewKey(menuKey)) {
-        onChange(menuKey);
+        dispatch(setView({ view: menuKey }));
       }
     }
   };
@@ -40,7 +41,7 @@ const MenuView = ({ value, onChange }: MenuViewProps) => {
             key={menuKey}>
             <Radio
               value={menuKey}
-              isChecked={menuKey === value}
+              isChecked={menuKey === view}
             />
             <div>{menuValue}</div>
           </S.StyledMenuItem>
