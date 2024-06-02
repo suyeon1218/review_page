@@ -1,3 +1,5 @@
+import { Post } from '~/types';
+
 export const DATE_SORT = Object.freeze({
   DATE_ASCENDING: '최근 순',
   DATE_DESCENDING: '오래된 순',
@@ -42,3 +44,13 @@ export const BADEG_COLOR: Record<keyof typeof MOVIE_CATEGORY, string> =
     FANTASY: 'pink',
     MUSIC: 'teal',
   });
+
+export const initialPost: Omit<Post, 'comment'> = Object.freeze({
+  title: '',
+  content: '',
+  id: '',
+  category: 'ROMANCE',
+  rating: 0,
+  date: new Date().toISOString(),
+  author: '',
+});
