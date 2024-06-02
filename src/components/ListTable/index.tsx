@@ -1,5 +1,5 @@
-import { BADEG_COLOR } from '~/constants';
 import { postAPI } from '~/service';
+import CategoryBadge from '../CategoryBadge';
 import Rating from '../Rating';
 import * as S from './index.style';
 import useFilterPost from '~/hooks/useFilterPost';
@@ -26,9 +26,10 @@ const ListTable = () => {
               </S.LeftSideContainer>
               <S.RightSideContainer>
                 <Rating value={rating} />
-                <S.ListCategory colorScheme={BADEG_COLOR[category]}>
-                  {category}
-                </S.ListCategory>
+                <CategoryBadge
+                  type={category}
+                  isFullWidth={true}
+                />
               </S.RightSideContainer>
             </S.ListBody>
           </S.List>

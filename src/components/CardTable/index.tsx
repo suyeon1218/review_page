@@ -1,5 +1,5 @@
-import { BADEG_COLOR } from '~/constants';
 import { postAPI } from '~/service';
+import CategoryBadge from '../CategoryBadge';
 import Rating from '../Rating';
 import * as S from './index.style';
 import useFilterPost from '~/hooks/useFilterPost';
@@ -24,9 +24,7 @@ const CardTable = () => {
             <S.StyledCardHeader>
               <S.CardTitle>{title}</S.CardTitle>
               <Rating value={rating} />
-              <S.CardCategory colorScheme={BADEG_COLOR[category]}>
-                {category}
-              </S.CardCategory>
+              <CategoryBadge type={category} />
             </S.StyledCardHeader>
             <S.StyledCardBody>
               <S.CardContent>{content}</S.CardContent>
