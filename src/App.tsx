@@ -1,5 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { ListPage, DetailPage } from './pages';
+import { PostListPage, DetailPage } from './pages';
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
       <Routes>
         <Route
           path='/'
-          element={<ListPage />}></Route>
+          element={<PostListPage />}></Route>
         <Route
           path='/posts/:id'
           element={<DetailPage />}></Route>

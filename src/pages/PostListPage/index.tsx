@@ -5,7 +5,7 @@ import CardTable from '~/components/CardTable';
 import ListTable from '~/components/ListTable';
 import TableHeader from '~/components/TableHeader';
 
-const ListPage = () => {
+const PostListPage = () => {
   const { view } = useSelector((state: RootState) => state.view);
 
   return (
@@ -18,4 +18,4 @@ const ListPage = () => {
   );
 };
 
-export default ListPage;
+export default PostListPage;
