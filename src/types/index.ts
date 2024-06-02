@@ -17,11 +17,14 @@ export interface Post {
   content: string;
   category: MovieCategory;
   date: Date;
+  author: string;
   comment: Comment[];
 }
 
 export interface Comment {
   id: string;
   content: string;
+  author: string;
   date: Date;
+  like: number;
 }
