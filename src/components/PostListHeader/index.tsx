@@ -6,7 +6,7 @@ import MenuView from '../MenuView';
 import SearchBar from '../SearchBar';
 import * as S from './index.style';
 
-const TableHeader = () => {
+const PostListHeader = () => {
   return (
     <S.Container>
       <S.LeftSideContainer>
@@ -27,4 +27,4 @@ const TableHeader = () => {
   );
 };
 
-export default TableHeader;
+export default PostListHeader;
