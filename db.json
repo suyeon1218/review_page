@@ -7,14 +7,14 @@
       "category": "SF",
       "author": "스워좋아",
       "rating": 5,
+      "scrap": 3,
       "date": "2019-06-02T12:41:03",
       "comments": [
         {
           "id": 1,
           "author": "suyeon",
           "content": "첫번째 댓글",
-          "date": "2020-06-02T12:41:03",
-          "like": 3
+          "date": "2020-06-02T12:41:03"
         }
       ]
     },
@@ -25,21 +25,20 @@
       "category": "ANIMATION",
       "author": "마일즈",
       "rating": 5,
+      "scrap": 3,
       "date": "2021-12-02T12:41:03",
       "comments": [
         {
           "id": 1,
           "author": "Hello",
           "content": "첫번째 댓글",
-          "date": "2021-12-03T12:41:03",
-          "like": 3
+          "date": "2021-12-03T12:41:03"
         },
         {
           "id": 2,
           "author": "음",
           "content": "날짜를 꼭 넣어야 할까요?",
-          "date": "2021-12-09T12:41:03",
-          "like": 3
+          "date": "2021-12-09T12:41:03"
         }
       ]
     },
@@ -50,16 +49,28 @@
       "category": "ANIMATION",
       "date": "2022-02-09T12:41:03",
       "rating": 5,
+      "scrap": 3,
       "author": "suyeon",
       "comments": [
         {
           "id": 1,
           "author": "리오",
           "content": "재밌게 봤습니다",
-          "date": "2022-03-09T12:41:03",
-          "like": 3
+          "date": "2022-03-09T12:41:03"
         }
       ]
+    }
+  ],
+  "likes": [
+    {
+      "id": 1,
+      "userId": "suyeon",
+      "postId": 1
+    },
+    {
+      "id": 2,
+      "userId": "user1",
+      "postId": 1
     }
   ]
 }

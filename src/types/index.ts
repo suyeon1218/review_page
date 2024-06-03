@@ -19,6 +19,7 @@ export interface Post {
   date: string;
   author: string;
   rating: 0 | 1 | 2 | 3 | 4 | 5;
+  scrap: number;
   comments: Comment[];
 }
 
@@ -27,5 +28,10 @@ export interface Comment {
   content: string;
   author: string;
   date: string;
-  like: number;
+}
+
+export interface Like {
+  id: number;
+  postId: number;
+  userId: string;
 }
