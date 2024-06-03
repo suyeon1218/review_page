@@ -23,6 +23,7 @@ export interface Post {
 
 export interface Comment {
   id: string;
+  postId: string;
   content: string;
   author: string;
   date: string;
