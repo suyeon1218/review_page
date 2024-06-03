@@ -13,7 +13,7 @@ const postAPI = {
       },
     });
   },
-  useGetPostById: (postId: number | string) => {
+  useGetPostById: (postId: string) => {
     return useQuery({
       queryKey: [`post`],
       queryFn: async () => {
@@ -33,7 +33,7 @@ const postAPI = {
       },
     });
   },
-  useDeletePost: (postId: string | number) => {
+  useDeletePost: (postId: string) => {
     return useMutation({
       mutationKey: ['createPost'],
       mutationFn: async () => {
@@ -43,7 +43,7 @@ const postAPI = {
       },
     });
   },
-  useEditPost: (postId: string | number, data: Partial<Post>) => {
+  useEditPost: (postId: string, data: Partial<Post>) => {
     return useMutation({
       mutationKey: ['createPost'],
       mutationFn: async () => {

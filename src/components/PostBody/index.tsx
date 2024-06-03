@@ -3,11 +3,11 @@ import { postAPI } from '~/service';
 import * as S from './index.style';
 
 interface PostBodyProps {
-  id: number | string;
+  postId: string;
 }
 
-const PostBody = ({ id }: PostBodyProps) => {
-  const { data: post } = postAPI.useGetPostById(id as string);
+const PostBody = ({ postId }: PostBodyProps) => {
+  const { data: post } = postAPI.useGetPostById(postId);
   const { content } = post ? post : initialPost;
 
   return (

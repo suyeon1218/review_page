@@ -21,8 +21,8 @@ const PostDetailPage = () => {
     <S.Container>
       <GoBack />
       <S.Post>
-        <PostHeader id={id} />
-        <PostBody id={id} />
+        <PostHeader postId={id} />
+        <PostBody postId={id} />
       </S.Post>
       <S.Comment>
         <CommentInput />
