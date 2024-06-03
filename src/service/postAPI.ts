@@ -49,6 +49,7 @@ const postAPI = {
         queryClient.invalidateQueries({
           queryKey: ['allPost', `post_${postId}`],
         });
+        alert('리뷰를 삭제했어요!');
         navigate('/');
       },
     });

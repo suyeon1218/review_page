@@ -48,7 +48,6 @@ const PostItem = ({ postId }: PostHeaderProps) => {
   const handleClickDeleteButton = () => {
     if (confirm('리뷰를 삭제할까요?')) {
       deletePostMutate.mutate({ postId });
-      alert('삭제되었습니다');
     }
   };
 
