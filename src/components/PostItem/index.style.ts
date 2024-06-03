@@ -2,10 +2,25 @@ import { Badge, Button } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 20px auto;
+
+  @media screen and (max-width: 768px) {
+    padding: 0 5px;
+  }
+`;
+
+export const Header = styled.div`
+  width: 100%;
+`;
+
+export const Body = styled.div`
+  width: 100%;
+  padding: 20px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray[100]};
 `;
 
 export const Col = styled.div`

@@ -5,8 +5,7 @@ import * as S from './index.style';
 import CommentInput from '~/components/CommentInput';
 import CommentItem from '~/components/CommentItem';
 import GoBack from '~/components/GoBack';
-import PostBody from '~/components/PostBody';
-import PostHeader from '~/components/PostHeader';
+import PostItem from '~/components/PostItem';
 
 const PostDetailPage = () => {
   const { id } = useParams();
@@ -21,8 +20,7 @@ const PostDetailPage = () => {
     <S.Container>
       <GoBack />
       <S.Post>
-        <PostHeader postId={id} />
-        <PostBody postId={id} />
+        <PostItem postId={id} />
       </S.Post>
       <S.Comment>
         <CommentInput />
