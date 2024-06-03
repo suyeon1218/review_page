@@ -3,7 +3,7 @@ import { postAPI } from '~/service';
 import * as S from './index.style';
 
 interface PostBodyProps {
-  id: string;
+  id: number | string;
 }
 
 const PostBody = ({ id }: PostBodyProps) => {
