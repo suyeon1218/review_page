@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { MY_ID } from '~/constants';
 import { commentAPI } from '~/service';
 import * as S from './index.style';
 import CommentInput from '~/components/CommentInput';
@@ -9,6 +10,7 @@ import PostItem from '~/components/PostItem';
 const PostDetailPage = () => {
   const { id } = useParams();
   const { data: comments } = commentAPI.useGetCommentByPost(id as string);
+  const createCommentMutate = commentAPI.useCreateComment();
 
   if (id === undefined) {
     return <div>Error</div>;
@@ -18,6 +20,15 @@ const PostDetailPage = () => {
     return <div>로딩중...</div>;
   }
 
+  const handleSubmitComment = (value: string) => {
+    createCommentMutate.mutate({
+      content: value,
+      author: MY_ID,
+      postId: id,
+      date: new Date().toISOString(),
+    });
+  };
+
   return (
     <S.Container>
       <GoBack />
@@ -25,7 +36,7 @@ const PostDetailPage = () => {
         <PostItem postId={id} />
       </S.Post>
       <S.Comment>
-        <CommentInput />
+        <CommentInput onSubmit={handleSubmitComment} />
         {comments.map((comment) => (
           <CommentItem
             key={comment.id}
