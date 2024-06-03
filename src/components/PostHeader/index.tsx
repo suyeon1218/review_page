@@ -1,6 +1,6 @@
 import { StarIcon } from '@chakra-ui/icons';
 import { MY_ID, initialPost } from '~/constants';
-import { postAPI, likeAPI } from '~/service';
+import { postAPI, scrapAPI } from '~/service';
 import CategoryBadge from '../CategoryBadge';
 import Rating from '../Rating';
 import * as S from './index.style';
@@ -12,11 +12,11 @@ interface PostHeaderProps {
 
 const PostHeader = ({ id }: PostHeaderProps) => {
   const { data: post } = postAPI.useGetPostById(id);
-  const { data: like } = likeAPI.useGETLikeByUserId(MY_ID);
+  const { data: myScrap } = scrapAPI.useGETScrapByUserId(MY_ID);
   const { title, rating, author, category, date, scrap } = post
     ? post
     : initialPost;
-  const scrapedPostsId = like?.map((like) => like.postId);
+  const scrapedPostsId = myScrap?.map((scrap) => scrap.postId);
 
   return (
     <S.Container>
