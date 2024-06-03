@@ -13,12 +13,16 @@ const PostDetailPage = () => {
   const { data: post } = postAPI.useGetPostById(id as string);
   const { comments } = post ? post : initialPost;
 
+  if (id === undefined) {
+    throw new Error('404');
+  }
+
   return (
     <S.Container>
       <GoBack />
       <S.Post>
-        <PostHeader />
-        <PostBody />
+        <PostHeader id={id} />
+        <PostBody id={id} />
       </S.Post>
       <S.Comment>
         <CommentInput />

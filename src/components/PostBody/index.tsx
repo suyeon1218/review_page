@@ -1,10 +1,12 @@
-import { useParams } from 'react-router-dom';
 import { initialPost } from '~/constants';
 import { postAPI } from '~/service';
 import * as S from './index.style';
 
-const PostBody = () => {
-  const { id } = useParams();
+interface PostBodyProps {
+  id: string;
+}
+
+const PostBody = ({ id }: PostBodyProps) => {
   const { data: post } = postAPI.useGetPostById(id as string);
   const { content } = post ? post : initialPost;
 
