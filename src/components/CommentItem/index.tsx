@@ -10,6 +10,13 @@ interface CommentItem {
 const CommentItem = ({ commentId }: CommentItem) => {
   const { data: comment } = commentAPI.useGetCommentById(commentId);
   const { author, date, content } = comment ? comment : initialComment;
+  const deleteMutate = commentAPI.useDeleteComment();
+
+  const handleClickDeleteButton = () => {
+    if (confirm('댓글을 삭제할까요?')) {
+      deleteMutate.mutate({ commentId });
+    }
+  };
 
   return (
     <S.Container>
@@ -20,7 +27,9 @@ const CommentItem = ({ commentId }: CommentItem) => {
         </S.Left>
         <S.Right>
           <S.StyledButton>수정</S.StyledButton>
-          <S.StyledButton>삭제</S.StyledButton>
+          <S.StyledButton onClick={handleClickDeleteButton}>
+            삭제
+          </S.StyledButton>
         </S.Right>
       </S.Header>
       <S.Body>{content}</S.Body>
