@@ -1,6 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { Post } from '~/types';
-import { GET } from '../api/request';
+import { DELETE, GET, POST, PATCH } from '../api/request';
 
 const postAPI = {
   useGetPosts: () => {
@@ -13,11 +13,41 @@ const postAPI = {
       },
     });
   },
-  useGetPostById: (id: string) => {
+  useGetPostById: (postId: number | string) => {
     return useQuery({
-      queryKey: ['post'],
+      queryKey: [`post`],
       queryFn: async () => {
-        const response = await GET<Post>(`posts/${id}`);
+        const response = await GET<Post>(`/posts/${postId}`);
+
+        return response;
+      },
+    });
+  },
+  useCreatePost: (data: Post) => {
+    return useMutation({
+      mutationKey: ['createPost'],
+      mutationFn: async () => {
+        const response = await POST<Post>('', data);
+
+        return response;
+      },
+    });
+  },
+  useDeletePost: (postId: string | number) => {
+    return useMutation({
+      mutationKey: ['createPost'],
+      mutationFn: async () => {
+        const response = await DELETE(`/posts/:${postId}`);
+
+        return response;
+      },
+    });
+  },
+  useEditPost: (postId: string | number, data: Partial<Post>) => {
+    return useMutation({
+      mutationKey: ['createPost'],
+      mutationFn: async () => {
+        const response = await PATCH<Post>(`/posts/${postId}`, data);
 
         return response;
       },

@@ -12,7 +12,7 @@ export type Filter = keyof typeof MOVIE_CATEGORY;
 export type View = keyof typeof VIEW_TYPE;
 
 export interface Post {
-  id: string;
+  id: number | string;
   title: string;
   content: string;
   category: MovieCategory;
@@ -24,14 +24,14 @@ export interface Post {
 }
 
 export interface Comment {
-  id: string;
+  id: number | string;
   content: string;
   author: string;
   date: string;
 }
 
-export interface Like {
-  id: number;
-  postId: number;
+export interface Scrap {
+  id: number | string;
+  postId: number | string;
   userId: string;
 }
