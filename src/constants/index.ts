@@ -45,7 +45,7 @@ export const BADEG_COLOR: Record<keyof typeof MOVIE_CATEGORY, string> =
     MUSIC: 'teal',
   });
 
-export const initialPost: Omit<Post, 'comment'> = Object.freeze({
+export const initialPost: Post = Object.freeze({
   title: '',
   content: '',
   id: '',
@@ -53,4 +53,5 @@ export const initialPost: Omit<Post, 'comment'> = Object.freeze({
   rating: 0,
   date: new Date().toISOString(),
   author: '',
+  comments: [],
 });

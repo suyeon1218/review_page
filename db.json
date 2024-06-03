@@ -8,7 +8,7 @@
       "author": "스워좋아",
       "rating": 5,
       "date": "2019-06-02T12:41:03",
-      "comment": [
+      "comments": [
         {
           "id": 1,
           "author": "suyeon",
@@ -26,7 +26,7 @@
       "author": "마일즈",
       "rating": 5,
       "date": "2021-12-02T12:41:03",
-      "comment": [
+      "comments": [
         {
           "id": 1,
           "author": "Hello",
@@ -51,7 +51,7 @@
       "date": "2022-02-09T12:41:03",
       "rating": 5,
       "author": "suyeon",
-      "comment": [
+      "comments": [
         {
           "id": 1,
           "author": "리오",
