@@ -21,7 +21,7 @@ export const POST = async <T>(path: string, data: T) => {
   }
 };
 
-export const PUT = async <T>(path: string, data: Partial<T>) => {
+export const PATCH = async <T>(path: string, data: Partial<T>) => {
   try {
     const response = await apiClient.put(path, data);
 
