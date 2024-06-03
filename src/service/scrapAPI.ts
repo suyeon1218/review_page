@@ -13,21 +13,23 @@ const scrapAPI = {
       },
     });
   },
-  useCreateScrap: (data: Omit<Scrap, 'id'>) => {
+  useCreateScrap: () => {
     return useMutation({
       mutationKey: [`deleteScrap`],
-      mutationFn: async () => {
+      mutationFn: async (data: Omit<Scrap, 'id'>) => {
         const response = await POST(`/scrap`, data);
+        console.log('create', response);
 
         return response;
       },
     });
   },
-  useDeleteScrapById: (scrapId: string | number) => {
+  useDeleteScrapById: () => {
     return useMutation({
       mutationKey: [`deleteScrap`],
-      mutationFn: async () => {
+      mutationFn: async (scrapId: string) => {
         const response = await DELETE(`/scrap/${scrapId}`);
+        console.log('delete', response);
 
         return response;
       },

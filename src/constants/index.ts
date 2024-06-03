@@ -49,7 +49,6 @@ export const initialPost: Post = Object.freeze({
   title: '',
   content: '',
   id: '',
-  scrap: 0,
   category: 'ROMANCE',
   rating: 0,
   date: new Date().toISOString(),
