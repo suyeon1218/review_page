@@ -1,4 +1,6 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
+import { queryClient } from '~/api';
 import { Post } from '~/types';
 import { DELETE, GET, POST, PATCH } from '../api/request';
 
@@ -15,7 +17,7 @@ const postAPI = {
   },
   useGetPostById: (postId: string) => {
     return useQuery({
-      queryKey: [`post${postId}`],
+      queryKey: [`post_${postId}`],
       queryFn: async () => {
         const response = await GET<Post>(`/posts/${postId}`);
 
@@ -34,12 +36,20 @@ const postAPI = {
     });
   },
   useDeletePost: () => {
+    const navigate = useNavigate();
+
     return useMutation({
       mutationKey: ['deletePost'],
       mutationFn: async ({ postId }: { postId: string }) => {
-        const response = await DELETE(`/posts/:${postId}`);
+        const response = await DELETE(`/posts/${postId}`);
 
         return response;
+      },
+      onSuccess: (_, { postId }) => {
+        queryClient.invalidateQueries({
+          queryKey: ['allPost', `post_${postId}`],
+        });
+        navigate('/');
       },
     });
   },

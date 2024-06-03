@@ -1,4 +1,5 @@
 import { StarIcon } from '@chakra-ui/icons';
+import { useNavigate } from 'react-router-dom';
 import { MY_ID, initialPost } from '~/constants';
 import { postAPI, scrapAPI } from '~/service';
 import CategoryBadge from '../CategoryBadge';
@@ -11,7 +12,15 @@ interface PostHeaderProps {
 }
 
 const PostItem = ({ postId }: PostHeaderProps) => {
-  const { data: post } = postAPI.useGetPostById(postId);
+  const navigate = useNavigate();
+  const { data: post, isError } = postAPI.useGetPostById(postId);
+
+  if (isError) {
+    alert('존재하지 않는 페이지입니다');
+    navigate('/');
+    throw new Error('404');
+  }
+
   const { data: myScrap } = scrapAPI.useGetScrapByUserId(MY_ID);
   const { title, rating, author, category, date, content } = post
     ? post
@@ -37,7 +46,10 @@ const PostItem = ({ postId }: PostHeaderProps) => {
   };
 
   const handleClickDeleteButton = () => {
-    deletePostMutate.mutate({ postId });
+    if (confirm('리뷰를 삭제할까요?')) {
+      deletePostMutate.mutate({ postId });
+      alert('삭제되었습니다');
+    }
   };
 
   return (
