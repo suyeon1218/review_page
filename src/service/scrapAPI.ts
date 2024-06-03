@@ -17,8 +17,8 @@ const scrapAPI = {
   useCreateScrap: () => {
     return useMutation({
       mutationKey: [`deleteScrap`],
-      mutationFn: async (data: Omit<Scrap, 'id'>) => {
-        const response = await POST(`/scrap`, data);
+      mutationFn: async (scrap: { scrap: Omit<Scrap, 'id'> }) => {
+        const response = await POST(`/scrap`, scrap);
 
         return response;
       },
@@ -30,7 +30,7 @@ const scrapAPI = {
   useDeleteScrapById: () => {
     return useMutation({
       mutationKey: [`deleteScrap`],
-      mutationFn: async (scrapId: string) => {
+      mutationFn: async ({ scrapId }: { scrapId: string }) => {
         const response = await DELETE(`/scrap/${scrapId}`);
 
         return response;

@@ -22,10 +22,12 @@ const PostDetailPage = () => {
 
   const handleSubmitComment = (value: string) => {
     createCommentMutate.mutate({
-      content: value,
-      author: MY_ID,
-      postId: id,
-      date: new Date().toISOString(),
+      comment: {
+        content: value,
+        author: MY_ID,
+        postId: id,
+        date: new Date().toISOString(),
+      },
     });
   };
 

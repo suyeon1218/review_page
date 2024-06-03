@@ -18,18 +18,26 @@ const PostItem = ({ postId }: PostHeaderProps) => {
     : initialPost;
   const matchedScrapedPost =
     myScrap && myScrap.find((scrap) => scrap.postId === postId);
+
   const deleteScrapMutate = scrapAPI.useDeleteScrapById();
   const createScrapMutate = scrapAPI.useCreateScrap();
+  const deletePostMutate = postAPI.useDeletePost();
 
   const handleChangeScrapStatus = () => {
     if (matchedScrapedPost) {
-      deleteScrapMutate.mutate(matchedScrapedPost.id);
+      deleteScrapMutate.mutate({ scrapId: matchedScrapedPost.id });
     } else {
       createScrapMutate.mutate({
-        userId: MY_ID,
-        postId: postId,
+        scrap: {
+          userId: MY_ID,
+          postId,
+        },
       });
     }
+  };
+
+  const handleClickDeleteButton = () => {
+    deletePostMutate.mutate({ postId });
   };
 
   return (
@@ -54,7 +62,9 @@ const PostItem = ({ postId }: PostHeaderProps) => {
           </S.LeftSideContainer>
           <S.RightSideContainer>
             <S.StyledButton>수정</S.StyledButton>
-            <S.StyledButton>삭제</S.StyledButton>
+            <S.StyledButton onClick={handleClickDeleteButton}>
+              삭제
+            </S.StyledButton>
           </S.RightSideContainer>
         </S.EtcRow>
       </S.Header>

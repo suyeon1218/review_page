@@ -23,7 +23,7 @@ export const POST = async <T>(path: string, data: T) => {
 
 export const PATCH = async <T>(path: string, data: Partial<T>) => {
   try {
-    const response = await apiClient.put(path, data);
+    const response = await apiClient.patch(path, data);
 
     return response.data;
   } catch (error) {

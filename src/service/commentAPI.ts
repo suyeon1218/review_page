@@ -27,7 +27,7 @@ const commentAPI = {
   useCreateComment: () => {
     return useMutation({
       mutationKey: ['createComment'],
-      mutationFn: async (comment: Omit<Comment, 'id'>) => {
+      mutationFn: async ({ comment }: { comment: Omit<Comment, 'id'> }) => {
         const response = await POST('/comments', comment);
 
         return response;
