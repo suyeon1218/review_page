@@ -8,7 +8,7 @@ const GoBack = () => {
   return (
     <S.Container
       onClick={() => {
-        navigate(-1);
+        navigate('/');
       }}>
       <ArrowBackIcon />
       <div>뒤로 가기</div>
