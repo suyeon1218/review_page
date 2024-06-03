@@ -1,11 +1,12 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { queryClient } from '~/api';
 import { Scrap } from '~/types';
 import { DELETE, GET, POST } from '~/api/request';
 
 const scrapAPI = {
   useGetScrapByUserId: (userId: string) => {
     return useQuery({
-      queryKey: [`scrap`],
+      queryKey: ['scrap'],
       queryFn: async () => {
         const response = await GET<Scrap[]>(`/scrap/?userId=${userId}`);
 
@@ -21,6 +22,9 @@ const scrapAPI = {
 
         return response;
       },
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['scrap'] });
+      },
     });
   },
   useDeleteScrapById: () => {
@@ -30,6 +34,9 @@ const scrapAPI = {
         const response = await DELETE(`/scrap/${scrapId}`);
 
         return response;
+      },
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['scrap'] });
       },
     });
   },
