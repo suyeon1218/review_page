@@ -1,4 +1,4 @@
-import { Badge } from '@chakra-ui/react';
+import { Badge, Button } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
@@ -62,5 +62,12 @@ export const Author = styled.div`
 export const RightSideContainer = styled.div`
   display: flex;
   gap: 5px;
+  color: ${({ theme }) => theme.colors.gray[500]};
+`;
+
+export const StyledButton = styled(Button)`
+  background-color: transparent;
+  padding: 0px;
+  font-weight: normal;
   color: ${({ theme }) => theme.colors.gray[500]};
 `;

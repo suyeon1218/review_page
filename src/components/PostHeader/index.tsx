@@ -45,8 +45,8 @@ const PostHeader = ({ id }: PostHeaderProps) => {
           <div>{YYYYMMDD(date)}</div>
         </S.LeftSideContainer>
         <S.RightSideContainer>
-          <div>수정</div>
-          <div>삭제</div>
+          <S.StyledButton>수정</S.StyledButton>
+          <S.StyledButton>삭제</S.StyledButton>
         </S.RightSideContainer>
       </S.EtcRow>
     </S.Container>
