@@ -19,7 +19,6 @@ export interface Post {
   date: string;
   author: string;
   rating: 0 | 1 | 2 | 3 | 4 | 5;
-  comments: Comment[];
 }
 
 export interface Comment {

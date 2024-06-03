@@ -1,13 +1,15 @@
-import { Comment } from '~/types';
+import { initialComment } from '~/constants';
+import { commentAPI } from '~/service';
 import * as S from './index.style';
 import { YYYYMMDD } from '~/utils/date';
 
 interface CommentItem {
-  comment: Comment;
+  commentId: string;
 }
 
-const CommentItem = ({ comment }: CommentItem) => {
-  const { author, date, content } = comment;
+const CommentItem = ({ commentId }: CommentItem) => {
+  const { data: comment } = commentAPI.useGetCommentById(commentId);
+  const { author, date, content } = comment ? comment : initialComment;
 
   return (
     <S.Container>

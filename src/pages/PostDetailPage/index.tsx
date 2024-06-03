@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { initialPost } from '~/constants';
-import { postAPI } from '~/service';
+import { commentAPI } from '~/service';
 import * as S from './index.style';
 import CommentInput from '~/components/CommentInput';
 import CommentItem from '~/components/CommentItem';
@@ -9,11 +8,14 @@ import PostItem from '~/components/PostItem';
 
 const PostDetailPage = () => {
   const { id } = useParams();
-  const { data: post } = postAPI.useGetPostById(id as string);
-  const { comments } = post ? post : initialPost;
+  const { data: comments } = commentAPI.useGetCommentByPost(id as string);
 
   if (id === undefined) {
-    throw new Error('404');
+    return <div>Error</div>;
+  }
+
+  if (comments === undefined) {
+    return <div>로딩중...</div>;
   }
 
   return (
@@ -27,7 +29,7 @@ const PostDetailPage = () => {
         {comments.map((comment) => (
           <CommentItem
             key={comment.id}
-            comment={comment}
+            commentId={comment.id}
           />
         ))}
       </S.Comment>

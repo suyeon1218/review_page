@@ -1,4 +1,4 @@
-import { Post } from '~/types';
+import { Comment, Post } from '~/types';
 
 export const DATE_SORT = Object.freeze({
   DATE_ASCENDING: '최근 순',
@@ -51,9 +51,15 @@ export const initialPost: Post = Object.freeze({
   id: '',
   category: 'ROMANCE',
   rating: 0,
-  date: new Date().toISOString(),
+  date: '',
   author: '',
-  comments: [],
+});
+
+export const initialComment: Comment = Object.freeze({
+  id: '',
+  author: '',
+  date: '',
+  content: '',
 });
 
 export const MY_ID = 'suyeon';
