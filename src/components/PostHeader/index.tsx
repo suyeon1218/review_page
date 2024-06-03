@@ -7,30 +7,35 @@ import * as S from './index.style';
 import { YYYYMMDD } from '~/utils/date';
 
 interface PostHeaderProps {
-  id: string;
+  postId: string;
 }
 
-const PostHeader = ({ id }: PostHeaderProps) => {
-  const { data: post } = postAPI.useGetPostById(id);
-  const { data: myScrap } = scrapAPI.useGETScrapByUserId(MY_ID);
-  const { title, rating, author, category, date, scrap } = post
-    ? post
-    : initialPost;
-  const scrapedPostsId = myScrap?.map((scrap) => scrap.postId);
+const PostHeader = ({ postId }: PostHeaderProps) => {
+  const { data: post } = postAPI.useGetPostById(postId);
+  const { data: myScrap } = scrapAPI.useGetScrapByUserId(MY_ID);
+  const { title, rating, author, category, date } = post ? post : initialPost;
+  const matchedScrapedPost =
+    myScrap && myScrap.find((scrap) => scrap.postId === postId);
+  const deleteScrapMutate = scrapAPI.useDeleteScrapById();
+  const createScrapMutate = scrapAPI.useCreateScrap();
+
+  const handleChangeScrapStatus = () => {
+    if (matchedScrapedPost) {
+      deleteScrapMutate.mutate(matchedScrapedPost.id);
+    } else {
+      createScrapMutate.mutate({
+        userId: MY_ID,
+        postId: postId,
+      });
+    }
+  };
 
   return (
     <S.Container>
       <S.TitleRow>
         <S.Title>{title}</S.Title>
-        <S.Scrap>
-          <StarIcon
-            color={
-              scrapedPostsId && scrapedPostsId.includes(Number(id))
-                ? 'yellow.300'
-                : 'gray'
-            }
-          />
-          <div>{scrap}</div>
+        <S.Scrap onClick={handleChangeScrapStatus}>
+          <StarIcon color={matchedScrapedPost ? 'yellow.300' : 'gray'} />
         </S.Scrap>
       </S.TitleRow>
       <S.CategoryRow>

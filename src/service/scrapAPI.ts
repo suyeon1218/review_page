@@ -18,7 +18,6 @@ const scrapAPI = {
       mutationKey: [`deleteScrap`],
       mutationFn: async (data: Omit<Scrap, 'id'>) => {
         const response = await POST(`/scrap`, data);
-        console.log('create', response);
 
         return response;
       },
@@ -29,7 +28,6 @@ const scrapAPI = {
       mutationKey: [`deleteScrap`],
       mutationFn: async (scrapId: string) => {
         const response = await DELETE(`/scrap/${scrapId}`);
-        console.log('delete', response);
 
         return response;
       },
