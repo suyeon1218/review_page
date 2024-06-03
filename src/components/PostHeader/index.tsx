@@ -14,11 +14,13 @@ const PostHeader = () => {
   return (
     <S.Container>
       <S.Title>{title}</S.Title>
-      <S.FirstRow>
-        <Rating value={rating} />
+      <S.CategoryRow>
         <CategoryBadge type={category} />
-      </S.FirstRow>
-      <S.SecondRow>
+      </S.CategoryRow>
+      <S.RatingRow>
+        <Rating value={rating} />
+      </S.RatingRow>
+      <S.EtcRow>
         <S.LeftSideContainer>
           <S.Author>{author}</S.Author>
           <div>{YYYYMMDD(date)}</div>
@@ -27,7 +29,7 @@ const PostHeader = () => {
           <div>수정</div>
           <div>삭제</div>
         </S.RightSideContainer>
-      </S.SecondRow>
+      </S.EtcRow>
     </S.Container>
   );
 };

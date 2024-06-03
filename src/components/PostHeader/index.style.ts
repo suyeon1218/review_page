@@ -2,15 +2,10 @@ import { Badge } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 20px auto;
-
-  @media screen and (max-width: 768px) {
-    width: 90%;
-  }
 `;
 
 export const Col = styled.div`
@@ -32,12 +27,11 @@ export const Title = styled(Col)`
   font-weight: bold;
 `;
 
-export const FirstRow = styled(Col)`
-  display: flex;
-  align-items: center;
-`;
+export const CategoryRow = styled(Col)``;
 
-export const SecondRow = styled(Col)`
+export const RatingRow = styled(Col)``;
+
+export const EtcRow = styled(Col)`
   justify-content: space-between;
 `;
 
