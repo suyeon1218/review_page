@@ -15,7 +15,7 @@ const postAPI = {
   },
   useGetPostById: (postId: string) => {
     return useQuery({
-      queryKey: [`post`],
+      queryKey: [`post${postId}`],
       queryFn: async () => {
         const response = await GET<Post>(`/posts/${postId}`);
 
@@ -35,7 +35,7 @@ const postAPI = {
   },
   useDeletePost: (postId: string) => {
     return useMutation({
-      mutationKey: ['createPost'],
+      mutationKey: ['deletePost'],
       mutationFn: async () => {
         const response = await DELETE(`/posts/:${postId}`);
 
