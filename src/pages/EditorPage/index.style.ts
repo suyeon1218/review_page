@@ -1,12 +1,11 @@
 import { Badge, Button } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 
-export const Form = styled.form`
+export const Container = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px auto;
 
   @media screen and (max-width: 768px) {
     padding: 0 5px;
@@ -17,7 +16,19 @@ export const Header = styled.header`
   width: 100%;
   height: 50px;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 20px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray[100]};
+`;
+
+export const Form = styled.form`
+  width: 70%;
+  margin: 20px auto;
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export const SubmitButton = styled(Button)`
@@ -48,11 +59,7 @@ export const Col = styled.div`
   }
 `;
 
-export const TitleRow = styled(Col)`
-  display: flex;
-  justify-content: space-between;
-  border-bottom-color: transparent;
-`;
+export const TitleRow = styled(Col)``;
 
 export const Title = styled.div`
   font-size: 24px;

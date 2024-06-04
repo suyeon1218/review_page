@@ -1,7 +1,8 @@
-import { Radio, RadioGroup } from '@chakra-ui/react';
+import { Radio } from '@chakra-ui/react';
 import { Controller, useFormContext } from 'react-hook-form';
 import { MOVIE_CATEGORY } from '~/constants';
 import { MovieCategory } from '~/types';
+import * as S from './index.style';
 
 interface InputCategoryProps {
   defaultValue?: MovieCategory;
@@ -15,7 +16,7 @@ const InputCategory = ({ defaultValue = 'ROMANCE' }: InputCategoryProps) => {
       name={'category'}
       control={control}
       render={({ field: { onChange } }) => (
-        <RadioGroup
+        <S.StyledRadioGroup
           defaultValue={defaultValue}
           onChange={onChange}>
           {Object.entries(MOVIE_CATEGORY).map(([key, value]) => (
@@ -25,7 +26,7 @@ const InputCategory = ({ defaultValue = 'ROMANCE' }: InputCategoryProps) => {
               {value}
             </Radio>
           ))}
-        </RadioGroup>
+        </S.StyledRadioGroup>
       )}
     />
   );

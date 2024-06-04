@@ -14,28 +14,30 @@ const EditorPage = () => {
   const methods = useForm();
 
   return (
-    <S.Form>
+    <S.Container>
       <S.Header>
         <GoBack />
         <S.SubmitButton>발행하기</S.SubmitButton>
       </S.Header>
-      <FormProvider {...methods}>
-        <S.FormProperty>
-          <S.TitleRow>
-            <InputTitle defaultValue={response?.data?.title} />
-          </S.TitleRow>
-          <S.CategoryRow>
-            <InputCategory defaultValue={response?.data?.category} />
-          </S.CategoryRow>
-          <S.RatingRow>
-            <InputRating defaultValue={response?.data?.rating} />
-          </S.RatingRow>
-        </S.FormProperty>
-        <S.FormBody>
-          <InputContent defaultValue={response?.data?.content} />
-        </S.FormBody>
-      </FormProvider>
-    </S.Form>
+      <S.Form>
+        <FormProvider {...methods}>
+          <S.FormProperty>
+            <S.TitleRow>
+              <InputTitle defaultValue={response?.data?.title} />
+            </S.TitleRow>
+            <S.CategoryRow>
+              <InputCategory defaultValue={response?.data?.category} />
+            </S.CategoryRow>
+            <S.RatingRow>
+              <InputRating defaultValue={response?.data?.rating} />
+            </S.RatingRow>
+          </S.FormProperty>
+          <S.FormBody>
+            <InputContent defaultValue={response?.data?.content} />
+          </S.FormBody>
+        </FormProvider>
+      </S.Form>
+    </S.Container>
   );
 };
 
