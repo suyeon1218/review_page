@@ -4,3 +4,9 @@ export const Container = styled.div`
   display: flex;
   gap: 2px;
 `;
+
+export const IconContainer = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

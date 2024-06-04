@@ -1,4 +1,3 @@
-import { Radio } from '@chakra-ui/react';
 import { Controller, useFormContext } from 'react-hook-form';
 import { MOVIE_CATEGORY } from '~/constants';
 import { MovieCategory } from '~/types';
@@ -20,11 +19,11 @@ const InputCategory = ({ defaultValue = 'ROMANCE' }: InputCategoryProps) => {
           defaultValue={defaultValue}
           onChange={onChange}>
           {Object.entries(MOVIE_CATEGORY).map(([key, value]) => (
-            <Radio
+            <S.StyledRadio
               key={key}
               value={key}>
               {value}
-            </Radio>
+            </S.StyledRadio>
           ))}
         </S.StyledRadioGroup>
       )}

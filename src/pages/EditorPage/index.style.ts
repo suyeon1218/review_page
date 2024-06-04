@@ -47,16 +47,11 @@ export const FormBody = styled.div`
 
 export const Col = styled.div`
   width: 100%;
-  height: 50px;
   display: flex;
   align-items: center;
   gap: 5px;
-  padding: 0px 20px;
+  padding: 15px 20px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray[100]};
-
-  @media screen and (max-width: 768px) {
-    padding: 0px 5px;
-  }
 `;
 
 export const TitleRow = styled(Col)``;

@@ -14,7 +14,7 @@ const Rating = ({ value = 0, readonly = true }: RatingProps) => {
   const handleClickIcon = (event: MouseEvent<HTMLDivElement>) => {
     if (readonly) return;
     if (event.target instanceof Element) {
-      const $span = event.target.closest('span') as HTMLSpanElement;
+      const $span = event.target.closest('S.IconContainer') as HTMLSpanElement;
       const { rating } = $span.dataset;
 
       if (rating) {
@@ -25,21 +25,21 @@ const Rating = ({ value = 0, readonly = true }: RatingProps) => {
 
   return (
     <S.Container onClick={handleClickIcon}>
-      <span data-rating={1}>
+      <S.IconContainer data-rating={1}>
         <StarIcon color={rating > 0 ? 'yellow.300' : 'gray'} />
-      </span>
-      <span data-rating={2}>
+      </S.IconContainer>
+      <S.IconContainer data-rating={2}>
         <StarIcon color={rating > 1 ? 'yellow.300' : 'gray'} />
-      </span>
-      <span data-rating={3}>
+      </S.IconContainer>
+      <S.IconContainer data-rating={3}>
         <StarIcon color={rating > 2 ? 'yellow.300' : 'gray'} />
-      </span>
-      <span data-rating={4}>
+      </S.IconContainer>
+      <S.IconContainer data-rating={4}>
         <StarIcon color={rating > 3 ? 'yellow.300' : 'gray'} />
-      </span>
-      <span data-rating={5}>
+      </S.IconContainer>
+      <S.IconContainer data-rating={5}>
         <StarIcon color={rating > 4 ? 'yellow.300' : 'gray'} />
-      </span>
+      </S.IconContainer>
     </S.Container>
   );
 };
