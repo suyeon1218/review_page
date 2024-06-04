@@ -1,4 +1,4 @@
-import { initialComment } from '~/constants';
+import { MY_ID, initialComment } from '~/constants';
 import { commentAPI } from '~/service';
 import * as S from './index.style';
 import { YYYYMMDD } from '~/utils/date';
@@ -25,12 +25,14 @@ const CommentItem = ({ commentId }: CommentItem) => {
           <S.Author>{author}</S.Author>
           <S.Date>{YYYYMMDD(date)}</S.Date>
         </S.Left>
-        <S.Right>
-          <S.StyledButton>수정</S.StyledButton>
-          <S.StyledButton onClick={handleClickDeleteButton}>
-            삭제
-          </S.StyledButton>
-        </S.Right>
+        {MY_ID === author && (
+          <S.Right>
+            <S.StyledButton>수정</S.StyledButton>
+            <S.StyledButton onClick={handleClickDeleteButton}>
+              삭제
+            </S.StyledButton>
+          </S.Right>
+        )}
       </S.Header>
       <S.Body>{content}</S.Body>
     </S.Container>

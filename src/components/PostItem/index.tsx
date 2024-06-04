@@ -71,12 +71,14 @@ const PostItem = ({ postId }: PostHeaderProps) => {
             <S.Author>{author}</S.Author>
             <div>{YYYYMMDD(date)}</div>
           </S.LeftSideContainer>
-          <S.RightSideContainer>
-            <S.StyledButton>수정</S.StyledButton>
-            <S.StyledButton onClick={handleClickDeleteButton}>
-              삭제
-            </S.StyledButton>
-          </S.RightSideContainer>
+          {MY_ID === author && (
+            <S.RightSideContainer>
+              <S.StyledButton>수정</S.StyledButton>
+              <S.StyledButton onClick={handleClickDeleteButton}>
+                삭제
+              </S.StyledButton>
+            </S.RightSideContainer>
+          )}
         </S.EtcRow>
       </S.Header>
       <S.Body>{content}</S.Body>
