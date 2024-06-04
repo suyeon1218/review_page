@@ -5,20 +5,21 @@ import * as S from './index.style';
 interface RatingProps {
   value?: 0 | 1 | 2 | 3 | 4 | 5;
   readonly?: boolean;
-  onChange?: () => void;
+  onChange?: (rating: number) => void;
 }
 
-const Rating = ({ value = 0, readonly = true }: RatingProps) => {
+const Rating = ({ value = 0, readonly = true, onChange }: RatingProps) => {
   const [rating, setRating] = useState<number>(value);
 
   const handleClickIcon = (event: MouseEvent<HTMLDivElement>) => {
     if (readonly) return;
     if (event.target instanceof Element) {
-      const $span = event.target.closest('S.IconContainer') as HTMLSpanElement;
+      const $span = event.target.closest('span') as HTMLSpanElement;
       const { rating } = $span.dataset;
 
       if (rating) {
         setRating(Number(rating));
+        onChange && onChange(Number(rating));
       }
     }
   };
