@@ -1,7 +1,7 @@
 import { StarIcon } from '@chakra-ui/icons';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { MY_ID, initialPost } from '~/constants';
+import { MY_ID } from '~/constants';
 import { postAPI, scrapAPI } from '~/service';
 import CategoryBadge from '../CategoryBadge';
 import Rating from '../Rating';
@@ -16,6 +16,10 @@ const PostItem = ({ postId }: PostHeaderProps) => {
   const navigate = useNavigate();
   const { data: post, isError } = postAPI.useGetPostById(postId);
 
+  if (post === undefined) {
+    return <div>Loaindg...</div>;
+  }
+
   if (isError) {
     alert('존재하지 않는 페이지입니다');
     navigate('/');
@@ -23,9 +27,7 @@ const PostItem = ({ postId }: PostHeaderProps) => {
   }
 
   const { data: myScrap } = scrapAPI.useGetScrapByUserId(MY_ID);
-  const { title, rating, author, category, date, content } = post
-    ? post
-    : initialPost;
+  const { title, rating, author, category, date, content } = post;
   const matchedScrapedPost =
     myScrap && myScrap.find((scrap) => scrap.postId === postId);
 
