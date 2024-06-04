@@ -15,6 +15,13 @@ interface PostHeaderProps {
 const PostItem = ({ postId }: PostHeaderProps) => {
   const navigate = useNavigate();
   const { data: post, isError } = postAPI.useGetPostById(postId);
+  const { data: myScrap } = scrapAPI.useGetScrapByUserId(MY_ID);
+  const matchedScrapedPost =
+    myScrap && myScrap.find((scrap) => scrap.postId === postId);
+
+  const deleteScrapMutate = scrapAPI.useDeleteScrapById();
+  const createScrapMutate = scrapAPI.useCreateScrap();
+  const deletePostMutate = postAPI.useDeletePost();
 
   if (post === undefined) {
     return <div>Loaindg...</div>;
@@ -26,14 +33,7 @@ const PostItem = ({ postId }: PostHeaderProps) => {
     throw new Error('404');
   }
 
-  const { data: myScrap } = scrapAPI.useGetScrapByUserId(MY_ID);
   const { title, rating, author, category, date, content } = post;
-  const matchedScrapedPost =
-    myScrap && myScrap.find((scrap) => scrap.postId === postId);
-
-  const deleteScrapMutate = scrapAPI.useDeleteScrapById();
-  const createScrapMutate = scrapAPI.useCreateScrap();
-  const deletePostMutate = postAPI.useDeletePost();
 
   const handleChangeScrapStatus = () => {
     if (matchedScrapedPost) {
