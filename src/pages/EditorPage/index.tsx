@@ -2,6 +2,7 @@ import { useToast } from '@chakra-ui/react';
 import { MouseEvent } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import { MY_ID } from '~/constants';
 import { postAPI } from '~/service';
 import { Post } from '~/types';
 import * as S from './index.style';
@@ -15,6 +16,8 @@ const EditorPage = () => {
   const { id } = useParams();
   const toast = useToast();
   const response = id ? postAPI.useGetPostById(id) : null;
+  const createMutate = postAPI.useCreatePost();
+  const editMutate = postAPI.useEditPost();
   const methods = useForm<
     Pick<Post, 'title' | 'category' | 'rating' | 'content'>
   >({
@@ -39,7 +42,13 @@ const EditorPage = () => {
         isClosable: true,
       });
     } else {
-      // 필드제출하기
+      const post = methods.getValues();
+
+      id === undefined
+        ? createMutate.mutate({
+            post: { ...post, date: new Date().toISOString(), author: MY_ID },
+          })
+        : editMutate.mutate({ postId: id, post });
     }
   };
 

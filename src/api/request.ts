@@ -11,7 +11,7 @@ export const GET = async <T>(path: string) => {
   }
 };
 
-export const POST = async <T>(path: string, data: T) => {
+export const POST = async <T>(path: string, data: Partial<T>) => {
   try {
     const response: AxiosResponse<T> = await apiClient.post(path, data);
 

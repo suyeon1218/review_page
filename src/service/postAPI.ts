@@ -25,13 +25,19 @@ const postAPI = {
       },
     });
   },
-  useCreatePost: ({ post }: { post: Post }) => {
+  useCreatePost: () => {
+    const navigate = useNavigate();
     return useMutation({
       mutationKey: ['createPost'],
-      mutationFn: async () => {
-        const response = await POST<Post>('', post);
+      mutationFn: async ({ post }: { post: Omit<Post, 'id'> }) => {
+        const response = await POST<Post>('/posts', post);
 
         return response;
+      },
+      onSuccess: (data) => {
+        if (data) {
+          navigate(`/posts/${data.id}`);
+        }
       },
     });
   },
@@ -55,6 +61,8 @@ const postAPI = {
     });
   },
   useEditPost: () => {
+    const navigate = useNavigate();
+
     return useMutation({
       mutationKey: ['editPost'],
       mutationFn: async ({
@@ -67,6 +75,9 @@ const postAPI = {
         const response = await PATCH<Post>(`/posts/${postId}`, post);
 
         return response;
+      },
+      onSuccess: (_, { postId }) => {
+        navigate(`/posts/${postId}`);
       },
     });
   },
