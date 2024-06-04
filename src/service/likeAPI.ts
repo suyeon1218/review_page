@@ -1,7 +1,6 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { queryClient } from '~/api';
+import { queryClient, DELETE, GET, POST } from '~/api';
 import { Like } from '~/types';
-import { DELETE, GET, POST } from '~/api/request';
 
 const likeAPI = {
   useGetLikeByUserId: (userId: string) => {

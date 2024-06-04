@@ -1,9 +1,8 @@
 import { useToast } from '@chakra-ui/react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import { queryClient } from '~/api';
+import { queryClient, DELETE, GET, POST, PATCH } from '~/api';
 import { Post } from '~/types';
-import { DELETE, GET, POST, PATCH } from '../api/request';
 
 const postAPI = {
   useGetPosts: () => {

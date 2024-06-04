@@ -1,7 +1,6 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { queryClient } from '~/api';
+import { queryClient, DELETE, GET, PATCH, POST } from '~/api';
 import { Comment } from '~/types';
-import { DELETE, GET, PATCH, POST } from '~/api/request';
 
 const commentAPI = {
   useGetCommentByPost: (postId: string) => {
