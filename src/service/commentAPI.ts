@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { queryClient } from '~/api';
 import { Comment } from '~/types';
-import { DELETE, GET, POST } from '~/api/request';
+import { DELETE, GET, PATCH, POST } from '~/api/request';
 
 const commentAPI = {
   useGetCommentByPost: (postId: string) => {
@@ -50,6 +50,27 @@ const commentAPI = {
         queryClient.invalidateQueries({
           queryKey: ['allComment'],
         });
+      },
+    });
+  },
+  useEditComment: () => {
+    return useMutation({
+      mutationKey: ['editComment'],
+      mutationFn: async ({
+        commentId,
+        content,
+      }: {
+        commentId: string;
+        content: string;
+      }) => {
+        const response = await PATCH<Comment>(`/comments/${commentId}`, {
+          content,
+        });
+
+        return response;
+      },
+      onSuccess: (_, { commentId }) => {
+        queryClient.invalidateQueries({ queryKey: [`comment_${commentId}`] });
       },
     });
   },

@@ -2,10 +2,11 @@ import { MouseEvent, useRef } from 'react';
 import * as S from './index.style';
 
 interface CommentInputProps {
+  defaultValue?: string;
   onSubmit?: (value: string) => void;
 }
 
-const CommentInput = ({ onSubmit }: CommentInputProps) => {
+const CommentInput = ({ onSubmit, defaultValue }: CommentInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmitComment = (event: MouseEvent<HTMLButtonElement>) => {
@@ -20,7 +21,8 @@ const CommentInput = ({ onSubmit }: CommentInputProps) => {
     <S.Container>
       <S.StyledInput
         ref={inputRef}
-        placeholder='댓글을 작성해보세요!'
+        defaultValue={defaultValue}
+        placeholder={'댓글을 작성해보세요!'}
       />
       <S.StyledSubmitButton onClick={handleSubmitComment}>
         댓글 쓰기
