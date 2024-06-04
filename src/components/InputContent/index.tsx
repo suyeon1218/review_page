@@ -11,6 +11,9 @@ const InputContent = ({ defaultValue = '' }: InputContentProps) => {
   return (
     <Controller
       name='content'
+      rules={{
+        required: true && '해당 필드를 채워주세요!',
+      }}
       control={control}
       render={({ field: { onChange } }) => (
         <TextField
