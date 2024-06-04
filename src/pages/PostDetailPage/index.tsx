@@ -33,7 +33,9 @@ const PostDetailPage = () => {
 
   return (
     <S.Container>
-      <GoBack />
+      <S.Header>
+        <GoBack />
+      </S.Header>
       <S.Post>
         <PostItem postId={id} />
       </S.Post>
