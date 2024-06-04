@@ -18,7 +18,7 @@ export interface Post {
   category: MovieCategory;
   date: string;
   author: string;
-  rating: 0 | 1 | 2 | 3 | 4 | 5;
+  rating: 1 | 2 | 3 | 4 | 5;
 }
 
 export interface Comment {

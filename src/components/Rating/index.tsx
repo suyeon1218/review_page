@@ -3,12 +3,12 @@ import { MouseEvent, useState } from 'react';
 import * as S from './index.style';
 
 interface RatingProps {
-  value?: 0 | 1 | 2 | 3 | 4 | 5;
+  value?: 1 | 2 | 3 | 4 | 5;
   readonly?: boolean;
   onChange?: (rating: number) => void;
 }
 
-const Rating = ({ value = 0, readonly = true, onChange }: RatingProps) => {
+const Rating = ({ value = 1, readonly = true, onChange }: RatingProps) => {
   const [rating, setRating] = useState<number>(value);
 
   const handleClickIcon = (event: MouseEvent<HTMLDivElement>) => {
