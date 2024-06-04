@@ -24,7 +24,7 @@ const initialView: ViewState = {
 };
 
 const initialSort: SortState = {
-  sort: 'DATE_ASCENDING',
+  sort: 'DATE_DESCENDING',
 };
 
 const filterSlice = createSlice({

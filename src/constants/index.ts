@@ -1,6 +1,6 @@
 export const DATE_SORT = Object.freeze({
-  DATE_ASCENDING: '최근 순',
-  DATE_DESCENDING: '오래된 순',
+  DATE_DESCENDING: '최신 순',
+  DATE_ASCENDING: '오래된 순',
   RATING_ASCENDING: '평점 낮은 순',
   RATING_DESCENDING: '평점 높은 순',
 });
