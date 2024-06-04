@@ -1,5 +1,6 @@
 import { StarIcon } from '@chakra-ui/icons';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { MY_ID, initialPost } from '~/constants';
 import { postAPI, scrapAPI } from '~/service';
 import CategoryBadge from '../CategoryBadge';
@@ -73,7 +74,9 @@ const PostItem = ({ postId }: PostHeaderProps) => {
           </S.LeftSideContainer>
           {MY_ID === author && (
             <S.RightSideContainer>
-              <S.StyledButton>수정</S.StyledButton>
+              <S.StyledButton>
+                <Link to={`/write/${postId}`}>수정</Link>
+              </S.StyledButton>
               <S.StyledButton onClick={handleClickDeleteButton}>
                 삭제
               </S.StyledButton>

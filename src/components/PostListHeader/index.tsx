@@ -1,5 +1,6 @@
 import { AddIcon } from '@chakra-ui/icons';
 import { Tooltip } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import MenuFilter from '../MenuFilter';
 import MenuSort from '../MenuSort';
 import MenuView from '../MenuView';
@@ -19,7 +20,9 @@ const PostListHeader = () => {
         <MenuView />
         <Tooltip label='글 작성'>
           <S.WriteButtonContainer>
-            <AddIcon />
+            <Link to='/write'>
+              <AddIcon />
+            </Link>
           </S.WriteButtonContainer>
         </Tooltip>
       </S.RightSideContainer>
