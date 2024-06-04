@@ -10,7 +10,6 @@ export const Container = styled.div`
 
 export const Header = styled.div`
   width: 90%;
-  min-height: 80px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray[200]};
   display: flex;
   justify-content: space-between;

@@ -47,10 +47,11 @@ export const Title = styled.div`
   font-weight: bold;
 `;
 
-export const Scrap = styled.div`
+export const Like = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const CategoryRow = styled(Col)``;

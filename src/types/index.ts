@@ -29,7 +29,7 @@ export interface Comment {
   date: string;
 }
 
-export interface Scrap {
+export interface Like {
   id: string;
   postId: string;
   userId: string;

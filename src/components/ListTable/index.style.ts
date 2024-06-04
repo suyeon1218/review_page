@@ -7,13 +7,13 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 20px auto;
-  cursor: pointer;
 `;
 
 export const List = styled(Card)`
   width: 70%;
   box-shadow: none;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray[100]};
+  cursor: pointer;
 
   @media screen and (max-width: 768px) {
     width: 100%;

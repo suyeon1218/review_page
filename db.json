@@ -82,7 +82,7 @@
       "author": "suyeon"
     }
   ],
-  "scrap": [
+  "like": [
     {
       "id": "2",
       "userId": "user1",
@@ -94,9 +94,9 @@
       "postId": "2"
     },
     {
-      "id": "7f8e",
+      "id": "703f",
       "userId": "suyeon",
-      "postId": "10db"
+      "postId": "ab6c"
     }
   ],
   "comments": [
@@ -116,13 +116,6 @@
     },
     {
       "id": "1aeiulf",
-      "postId": "1",
-      "author": "suyeon",
-      "content": "삭제할 댓글",
-      "date": "2020-06-02T12:41:03"
-    },
-    {
-      "id": "afef",
       "postId": "1",
       "author": "suyeon",
       "content": "삭제할 댓글",
@@ -169,13 +162,6 @@
       "author": "suyeon",
       "postId": "ab6c",
       "date": "2024-06-04T07:56:51.057Z"
-    },
-    {
-      "id": "4595",
-      "content": "그..별점도 0점 허용할 수 있도록 해야해요",
-      "author": "suyeon",
-      "postId": "9374",
-      "date": "2024-06-04T08:07:07.296Z"
     }
   ]
 }

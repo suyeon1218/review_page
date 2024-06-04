@@ -1,9 +1,10 @@
-import { StarIcon } from '@chakra-ui/icons';
+import { Tooltip } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { MY_ID } from '~/constants';
-import { postAPI, scrapAPI } from '~/service';
+import { postAPI, likeAPI } from '~/service';
 import CategoryBadge from '../CategoryBadge';
+import HeartIcon from '../HeartIcon';
 import Rating from '../Rating';
 import * as S from './index.style';
 import { YYYYMMDD } from '~/utils/date';
@@ -15,12 +16,11 @@ interface PostHeaderProps {
 const PostItem = ({ postId }: PostHeaderProps) => {
   const navigate = useNavigate();
   const { data: post, isError } = postAPI.useGetPostById(postId);
-  const { data: myScrap } = scrapAPI.useGetScrapByUserId(MY_ID);
-  const matchedScrapedPost =
-    myScrap && myScrap.find((scrap) => scrap.postId === postId);
+  const { data: myLike } = likeAPI.useGetLikeByUserId(MY_ID);
+  const myLikedPosts = myLike && myLike.find((like) => like.postId === postId);
 
-  const deleteScrapMutate = scrapAPI.useDeleteScrapById();
-  const createScrapMutate = scrapAPI.useCreateScrap();
+  const deleteLikeMutate = likeAPI.useDeleteLikeById();
+  const createLikeMutate = likeAPI.useCreateLike();
   const deletePostMutate = postAPI.useDeletePost();
 
   if (post === undefined) {
@@ -35,12 +35,12 @@ const PostItem = ({ postId }: PostHeaderProps) => {
 
   const { title, rating, author, category, date, content } = post;
 
-  const handleChangeScrapStatus = () => {
-    if (matchedScrapedPost) {
-      deleteScrapMutate.mutate({ scrapId: matchedScrapedPost.id });
+  const handleChangeLikeStatus = () => {
+    if (myLikedPosts) {
+      deleteLikeMutate.mutate({ likeId: myLikedPosts.id });
     } else {
-      createScrapMutate.mutate({
-        scrap: {
+      createLikeMutate.mutate({
+        like: {
           userId: MY_ID,
           postId,
         },
@@ -59,9 +59,11 @@ const PostItem = ({ postId }: PostHeaderProps) => {
       <S.Header>
         <S.TitleRow>
           <S.Title>{title}</S.Title>
-          <S.Scrap onClick={handleChangeScrapStatus}>
-            <StarIcon color={matchedScrapedPost ? 'yellow.300' : 'gray'} />
-          </S.Scrap>
+          <Tooltip label='좋아요'>
+            <S.Like onClick={handleChangeLikeStatus}>
+              <HeartIcon isFilled={!!myLikedPosts} />
+            </S.Like>
+          </Tooltip>
         </S.TitleRow>
         <S.CategoryRow>
           <CategoryBadge type={category} />
