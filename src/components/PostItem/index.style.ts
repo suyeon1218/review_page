@@ -40,10 +40,10 @@ export const Col = styled.div`
 export const TitleRow = styled(Col)`
   display: flex;
   justify-content: space-between;
+  font-size: 24px;
 `;
 
 export const Title = styled.div`
-  font-size: 24px;
   font-weight: bold;
 `;
 
