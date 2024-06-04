@@ -1,5 +1,4 @@
 import { useToast } from '@chakra-ui/react';
-import { MouseEvent } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { MY_ID } from '~/constants';
@@ -29,11 +28,12 @@ const EditorPage = () => {
     },
   });
 
-  const handleSubmitForm = async (event: MouseEvent<HTMLButtonElement>) => {
-    const { errors } = methods.formState;
-    event.preventDefault();
+  const handleSubmitForm = async () => {
+    const { getValues, trigger } = methods;
+    const post = getValues();
+    const result = await trigger(['title', 'content']);
 
-    if (Object.keys(errors).length > 0) {
+    if (result === false) {
       toast({
         description: '빈 필드들을 채워주세요!',
         status: 'error',
@@ -42,8 +42,6 @@ const EditorPage = () => {
         isClosable: true,
       });
     } else {
-      const post = methods.getValues();
-
       id === undefined
         ? createMutate.mutate({
             post: { ...post, date: new Date().toISOString(), author: MY_ID },
