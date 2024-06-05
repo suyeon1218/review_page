@@ -24,9 +24,16 @@ export const ListBody = styled(CardHeader)`
   font-weight: bold;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 5px;
 `;
 
-export const ListBodyLeft = styled.div``;
+export const ListBodyLeft = styled.div`
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+`;
 
 export const ListBodyRight = styled.div`
   height: 100%;
