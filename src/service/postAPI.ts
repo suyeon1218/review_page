@@ -1,7 +1,7 @@
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { queryClient, DELETE, GET, POST, PATCH } from '~/api';
-import { END_POINT } from '~/constants';
+import { END_POINT, ROUTER } from '~/constants';
 import { useToastMessage } from '~/hooks';
 import { Post } from '~/types';
 
@@ -39,7 +39,7 @@ const postAPI = {
       },
       onSuccess: (data) => {
         if (data) {
-          navigate(`/posts/${data.id}`);
+          navigate(`${ROUTER.POST_END_POINT}/${data.id}`);
           toast({
             description: '포스트를 발행했어요!',
             status: 'success',
@@ -73,7 +73,7 @@ const postAPI = {
           description: '포스트를 삭제했어요!',
           status: 'success',
         });
-        navigate('/');
+        navigate(ROUTER.POSTS);
       },
       onError: () => {
         toast({ description: '포스트를 삭제하지 못했어요.', status: 'error' });
@@ -101,7 +101,7 @@ const postAPI = {
         return response;
       },
       onSuccess: (_, { postId }) => {
-        navigate(`/posts/${postId}`);
+        navigate(`${ROUTER.POST_END_POINT}/${postId}`);
         toast({ description: '포스트를 발행했어요!', status: 'success' });
       },
       onError: () => {

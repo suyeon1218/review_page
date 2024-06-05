@@ -54,4 +54,7 @@ export const END_POINT = {
 export const ROUTER = {
   POSTS: '/',
   POST_DETAIL: '/posts/:id',
+  POST_END_POINT: '/posts',
+  WRITE: '/write',
+  EDIT: '/write/:id',
 };
