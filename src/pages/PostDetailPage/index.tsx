@@ -1,11 +1,9 @@
 import { useParams } from 'react-router-dom';
+import { GoBack } from '~/components';
 import { MY_ID } from '~/constants';
 import { commentAPI } from '~/service';
+import { CommentItem, CommentInput, PostItem } from './components';
 import * as S from './index.style';
-import CommentInput from '~/components/CommentInput';
-import CommentItem from '~/components/CommentItem';
-import GoBack from '~/components/GoBack';
-import PostItem from '~/components/PostItem';
 
 const PostDetailPage = () => {
   const { id } = useParams();
@@ -36,10 +34,10 @@ const PostDetailPage = () => {
       <S.Header>
         <GoBack />
       </S.Header>
-      <S.Post>
+      <S.PostContainer>
         <PostItem postId={id} />
-      </S.Post>
-      <S.Comment>
+      </S.PostContainer>
+      <S.CommentContainer>
         <CommentInput onSubmit={handleSubmitComment} />
         {comments.map((comment) => (
           <CommentItem
@@ -47,7 +45,7 @@ const PostDetailPage = () => {
             commentId={comment.id}
           />
         ))}
-      </S.Comment>
+      </S.CommentContainer>
     </S.Container>
   );
 };

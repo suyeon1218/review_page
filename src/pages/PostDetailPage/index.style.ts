@@ -21,8 +21,8 @@ export const Content = styled.div`
   }
 `;
 
-export const Post = styled(Content)``;
+export const PostContainer = styled(Content)``;
 
-export const Comment = styled(Content)`
+export const CommentContainer = styled(Content)`
   margin: 20px auto;
 `;

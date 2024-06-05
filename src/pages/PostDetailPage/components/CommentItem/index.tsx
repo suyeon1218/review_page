@@ -26,7 +26,7 @@ const CommentItem = ({ commentId }: CommentItem) => {
   const { author, date, content } = comment;
 
   const handleClickEditButton = () => {
-    setEditMode(true);
+    setEditMode(!editMode);
   };
 
   const handleClickDeleteButton = () => {
@@ -42,32 +42,29 @@ const CommentItem = ({ commentId }: CommentItem) => {
   return (
     <S.Container>
       <S.Header>
-        <S.Left>
+        <S.HeaderLeft>
           <S.Author>{author}</S.Author>
           <S.Date>{YYYYMMDD(date)}</S.Date>
-        </S.Left>
+        </S.HeaderLeft>
         {MY_ID === author && (
-          <S.Right>
-            {editMode === false && (
-              <S.StyledButton onClick={handleClickEditButton}>
-                수정
-              </S.StyledButton>
-            )}
+          <S.HeaderRight>
+            <S.StyledButton onClick={handleClickEditButton}>
+              {editMode ? '취소' : '수정'}
+            </S.StyledButton>
             <S.StyledButton onClick={handleClickDeleteButton}>
               삭제
             </S.StyledButton>
-          </S.Right>
+          </S.HeaderRight>
         )}
       </S.Header>
       <S.Body>
-        {editMode ? (
+        {editMode === true && (
           <CommentInput
             onSubmit={handleSubmitEditedComment}
             defaultValue={content}
           />
-        ) : (
-          content
         )}
+        {editMode === false && content}
       </S.Body>
     </S.Container>
   );

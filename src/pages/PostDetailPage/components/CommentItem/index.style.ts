@@ -18,13 +18,13 @@ export const Header = styled.div`
   justify-content: space-between;
 `;
 
-export const Left = styled.div`
+export const HeaderLeft = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
 `;
 
-export const Right = styled.div``;
+export const HeaderRight = styled.div``;
 
 export const Author = styled.div`
   font-weight: bold;

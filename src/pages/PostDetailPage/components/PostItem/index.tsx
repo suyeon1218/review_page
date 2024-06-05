@@ -1,11 +1,9 @@
 import { Tooltip } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { CategoryBadge, HeartIcon, Rating } from '~/components';
 import { MY_ID } from '~/constants';
 import { postAPI, likeAPI } from '~/service';
-import CategoryBadge from '../CategoryBadge';
-import HeartIcon from '../HeartIcon';
-import Rating from '../Rating';
 import * as S from './index.style';
 import { YYYYMMDD } from '~/utils/date';
 
@@ -15,7 +13,7 @@ interface PostHeaderProps {
 
 const PostItem = ({ postId }: PostHeaderProps) => {
   const navigate = useNavigate();
-  const { data: post, isError } = postAPI.useGetPostById(postId);
+  const { data: post, isError, isLoading } = postAPI.useGetPostById(postId);
   const { data: myLike } = likeAPI.useGetLikeByUserId(MY_ID);
   const myLikedPosts = myLike && myLike.find((like) => like.postId === postId);
 
@@ -23,7 +21,7 @@ const PostItem = ({ postId }: PostHeaderProps) => {
   const createLikeMutate = likeAPI.useCreateLike();
   const deletePostMutate = postAPI.useDeletePost();
 
-  if (post === undefined) {
+  if (post === undefined || isLoading) {
     return <div>Loaindg...</div>;
   }
 
