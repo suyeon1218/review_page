@@ -1,5 +1,4 @@
 import { Tooltip } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { CategoryBadge, HeartIcon, Rating } from '~/components';
 import { MY_ID } from '~/constants';
@@ -12,20 +11,13 @@ interface PostHeaderProps {
 }
 
 const PostItem = ({ postId }: PostHeaderProps) => {
-  const navigate = useNavigate();
-  const { data: post, isError } = postAPI.useGetPostById(postId);
+  const { data: post } = postAPI.useGetPostById(postId);
   const { data: myLike } = likeAPI.useGetLikeByUserId(MY_ID);
   const myLikedPosts = myLike && myLike.find((like) => like.postId === postId);
 
   const deleteLikeMutate = likeAPI.useDeleteLikeById();
   const createLikeMutate = likeAPI.useCreateLike();
   const deletePostMutate = postAPI.useDeletePost();
-
-  if (isError) {
-    alert('존재하지 않는 페이지입니다');
-    navigate('/');
-    throw new Error('404');
-  }
 
   const { title, rating, author, category, date, content } = post;
 

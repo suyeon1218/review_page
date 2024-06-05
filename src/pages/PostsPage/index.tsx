@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { useSelector } from 'react-redux';
-import { Loading } from '~/components';
+import { ErrorFallback, Loading } from '~/components';
 import { RootState } from '~/store';
 import { Header, ListTable, CardTable } from './components';
 import * as S from './index.style';
@@ -12,9 +13,11 @@ const PostListPage = () => {
     <S.Container>
       <Header />
       <S.Table>
-        <Suspense fallback={<Loading />}>
-          {view === 'LIST' ? <ListTable /> : <CardTable />}
-        </Suspense>
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <Suspense fallback={<Loading />}>
+            {view === 'LIST' ? <ListTable /> : <CardTable />}
+          </Suspense>
+        </ErrorBoundary>
       </S.Table>
     </S.Container>
   );

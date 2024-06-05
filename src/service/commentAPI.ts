@@ -1,5 +1,6 @@
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query';
 import { queryClient, DELETE, GET, PATCH, POST } from '~/api';
+import { useToastMessage } from '~/hooks';
 import { Comment } from '~/types';
 
 const commentAPI = {
@@ -24,6 +25,7 @@ const commentAPI = {
     });
   },
   useCreateComment: () => {
+    const errorToast = useToastMessage('댓글을 작성하지 못했어요!', 'error');
     return useMutation({
       mutationKey: ['createComment'],
       mutationFn: async ({ comment }: { comment: Omit<Comment, 'id'> }) => {
@@ -34,9 +36,13 @@ const commentAPI = {
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ['allComment'] });
       },
+      onError: () => {
+        errorToast();
+      },
     });
   },
   useDeleteComment: () => {
+    const errorToast = useToastMessage('댓글을 삭제하지 못했어요!', 'error');
     return useMutation({
       mutationKey: ['deleteComment'],
       mutationFn: async ({ commentId }: { commentId: string }) => {
@@ -49,9 +55,13 @@ const commentAPI = {
           queryKey: ['allComment'],
         });
       },
+      onError: () => {
+        errorToast();
+      },
     });
   },
   useEditComment: () => {
+    const errorToast = useToastMessage('댓글을 수정하지 못했어요!', 'error');
     return useMutation({
       mutationKey: ['editComment'],
       mutationFn: async ({
@@ -69,6 +79,9 @@ const commentAPI = {
       },
       onSuccess: (_, { commentId }) => {
         queryClient.invalidateQueries({ queryKey: [`comment_${commentId}`] });
+      },
+      onError: () => {
+        errorToast();
       },
     });
   },

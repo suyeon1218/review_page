@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router-dom';
-import { GoBack, Loading } from '~/components';
+import { ErrorFallback, GoBack, Loading } from '~/components';
 import { MY_ID } from '~/constants';
 import { commentAPI } from '~/service';
 import { CommentItem, CommentInput, PostItem } from './components';
@@ -12,7 +13,7 @@ const PostDetailPage = () => {
   const createCommentMutate = commentAPI.useCreateComment();
 
   if (id === undefined) {
-    return <div>Error</div>;
+    throw new Error('올바른 경로가 아니에요!');
   }
 
   const handleSubmitComment = (value: string) => {
@@ -31,20 +32,22 @@ const PostDetailPage = () => {
       <S.Header>
         <GoBack />
       </S.Header>
-      <Suspense fallback={<Loading />}>
-        <S.PostContainer>
-          <PostItem postId={id} />
-        </S.PostContainer>
-        <S.CommentContainer>
-          <CommentInput onSubmit={handleSubmitComment} />
-          {comments.map((comment) => (
-            <CommentItem
-              key={comment.id}
-              commentId={comment.id}
-            />
-          ))}
-        </S.CommentContainer>
-      </Suspense>
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <Suspense fallback={<Loading />}>
+          <S.PostContainer>
+            <PostItem postId={id} />
+          </S.PostContainer>
+          <S.CommentContainer>
+            <CommentInput onSubmit={handleSubmitComment} />
+            {comments.map((comment) => (
+              <CommentItem
+                key={comment.id}
+                commentId={comment.id}
+              />
+            ))}
+          </S.CommentContainer>
+        </Suspense>
+      </ErrorBoundary>
     </S.Container>
   );
 };

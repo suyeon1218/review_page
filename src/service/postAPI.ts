@@ -27,7 +27,8 @@ const postAPI = {
   },
   useCreatePost: () => {
     const navigate = useNavigate();
-    const toast = useToastMessage('포스트를 발행했어요!', 'success');
+    const successToast = useToastMessage('포스트를 발행했어요!', 'success');
+    const errorToast = useToastMessage('포스트를 발행하지 못했어요.', 'error');
 
     return useMutation({
       mutationKey: ['createPost'],
@@ -39,14 +40,18 @@ const postAPI = {
       onSuccess: (data) => {
         if (data) {
           navigate(`/posts/${data.id}`);
-          toast();
+          successToast();
         }
+      },
+      onError: () => {
+        errorToast();
       },
     });
   },
   useDeletePost: () => {
     const navigate = useNavigate();
-    const toast = useToastMessage('포스트를 삭제했어요!', 'success');
+    const successToast = useToastMessage('포스트를 삭제했어요!', 'success');
+    const errorToast = useToastMessage('포스트를 삭제하지 못했어요.', 'error');
 
     return useMutation({
       mutationKey: ['deletePost'],
@@ -59,14 +64,18 @@ const postAPI = {
         queryClient.invalidateQueries({
           queryKey: ['allPost', `post_${postId}`],
         });
-        toast();
+        successToast();
         navigate('/');
+      },
+      onError: () => {
+        errorToast();
       },
     });
   },
   useEditPost: () => {
     const navigate = useNavigate();
-    const toast = useToastMessage('포스트를 발행했어요!', 'success');
+    const successToast = useToastMessage('포스트를 발행했어요!', 'success');
+    const errorToast = useToastMessage('포스트를 발행하지 못했어요.', 'error');
 
     return useMutation({
       mutationKey: ['editPost'],
@@ -83,7 +92,10 @@ const postAPI = {
       },
       onSuccess: (_, { postId }) => {
         navigate(`/posts/${postId}`);
-        toast();
+        successToast();
+      },
+      onError: () => {
+        errorToast();
       },
     });
   },
