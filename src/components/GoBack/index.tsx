@@ -1,5 +1,6 @@
 import { ArrowBackIcon } from '@chakra-ui/icons';
 import { useNavigate } from 'react-router-dom';
+import { ROUTER } from '~/constants';
 import * as S from './index.style';
 
 const GoBack = () => {
@@ -8,7 +9,7 @@ const GoBack = () => {
   return (
     <S.Container
       onClick={() => {
-        navigate('/');
+        navigate(ROUTER.POSTS);
       }}>
       <ArrowBackIcon />
       <div>뒤로 가기</div>
