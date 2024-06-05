@@ -27,8 +27,7 @@ const postAPI = {
   },
   useCreatePost: () => {
     const navigate = useNavigate();
-    const successToast = useToastMessage('포스트를 발행했어요!', 'success');
-    const errorToast = useToastMessage('포스트를 발행하지 못했어요.', 'error');
+    const toast = useToastMessage();
 
     return useMutation({
       mutationKey: ['createPost'],
@@ -40,18 +39,23 @@ const postAPI = {
       onSuccess: (data) => {
         if (data) {
           navigate(`/posts/${data.id}`);
-          successToast();
+          toast({
+            description: '포스트를 발행했어요!',
+            status: 'success',
+          });
         }
       },
       onError: () => {
-        errorToast();
+        toast({
+          description: '포스트를 발행하지 못했어요.',
+          status: 'error',
+        });
       },
     });
   },
   useDeletePost: () => {
     const navigate = useNavigate();
-    const successToast = useToastMessage('포스트를 삭제했어요!', 'success');
-    const errorToast = useToastMessage('포스트를 삭제하지 못했어요.', 'error');
+    const toast = useToastMessage();
 
     return useMutation({
       mutationKey: ['deletePost'],
@@ -64,18 +68,20 @@ const postAPI = {
         queryClient.invalidateQueries({
           queryKey: ['allPost', `post_${postId}`],
         });
-        successToast();
+        toast({
+          description: '포스트를 삭제했어요!',
+          status: 'success',
+        });
         navigate('/');
       },
       onError: () => {
-        errorToast();
+        toast({ description: '포스트를 삭제하지 못했어요.', status: 'error' });
       },
     });
   },
   useEditPost: () => {
     const navigate = useNavigate();
-    const successToast = useToastMessage('포스트를 발행했어요!', 'success');
-    const errorToast = useToastMessage('포스트를 발행하지 못했어요.', 'error');
+    const toast = useToastMessage();
 
     return useMutation({
       mutationKey: ['editPost'],
@@ -92,10 +98,10 @@ const postAPI = {
       },
       onSuccess: (_, { postId }) => {
         navigate(`/posts/${postId}`);
-        successToast();
+        toast({ description: '포스트를 발행했어요!', status: 'success' });
       },
       onError: () => {
-        errorToast();
+        toast({ description: '포스트를 발행하지 못했어요.', status: 'error' });
       },
     });
   },

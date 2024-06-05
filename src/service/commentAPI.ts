@@ -25,7 +25,7 @@ const commentAPI = {
     });
   },
   useCreateComment: () => {
-    const errorToast = useToastMessage('댓글을 작성하지 못했어요!', 'error');
+    const toast = useToastMessage();
     return useMutation({
       mutationKey: ['createComment'],
       mutationFn: async ({ comment }: { comment: Omit<Comment, 'id'> }) => {
@@ -37,12 +37,12 @@ const commentAPI = {
         queryClient.invalidateQueries({ queryKey: ['allComment'] });
       },
       onError: () => {
-        errorToast();
+        toast({ description: '댓글을 작성하지 못했어요!', status: 'error' });
       },
     });
   },
   useDeleteComment: () => {
-    const errorToast = useToastMessage('댓글을 삭제하지 못했어요!', 'error');
+    const toast = useToastMessage();
     return useMutation({
       mutationKey: ['deleteComment'],
       mutationFn: async ({ commentId }: { commentId: string }) => {
@@ -56,12 +56,12 @@ const commentAPI = {
         });
       },
       onError: () => {
-        errorToast();
+        toast({ description: '댓글을 삭제하지 못했어요!', status: 'error' });
       },
     });
   },
   useEditComment: () => {
-    const errorToast = useToastMessage('댓글을 수정하지 못했어요!', 'error');
+    const toast = useToastMessage();
     return useMutation({
       mutationKey: ['editComment'],
       mutationFn: async ({
@@ -81,7 +81,7 @@ const commentAPI = {
         queryClient.invalidateQueries({ queryKey: [`comment_${commentId}`] });
       },
       onError: () => {
-        errorToast();
+        toast({ description: '댓글을 수정하지 못했어요!', status: 'error' });
       },
     });
   },

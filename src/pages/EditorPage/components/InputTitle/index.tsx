@@ -11,7 +11,11 @@ const InputTitle = ({ defaultValue = '' }: InputTitleProps) => {
   return (
     <S.StyledInput
       {...register('title', {
-        validate: (value) => value.length > 0 || '해당 필드를 채워주세요!',
+        validate: {
+          minLength: (value) => value.length > 0 || '제목 필드를 채워주세요!',
+          maxLength: (value) =>
+            value.length <= 100 || '제목은 최대 100글자 까지 허용합니다!',
+        },
       })}
       variant={'unstyled'}
       defaultValue={defaultValue}
