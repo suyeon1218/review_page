@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10px 20px;
+  margin: 0 auto;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray[100]};
 
   @media screen and (max-width: 768px) {
