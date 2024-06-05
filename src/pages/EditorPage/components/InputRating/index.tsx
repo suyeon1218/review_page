@@ -12,6 +12,7 @@ const InputRating = ({ defaultValue = 1 }: InputRatingProps) => {
     <Controller
       name={'rating'}
       control={control}
+      defaultValue={defaultValue}
       render={({ field: { onChange } }) => (
         <Rating
           value={defaultValue}
