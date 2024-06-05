@@ -1,8 +1,8 @@
-import { useToast } from '@chakra-ui/react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { GoBack } from '~/components';
 import { MY_ID } from '~/constants';
+import { useToastMessage } from '~/hooks';
 import { postAPI } from '~/service';
 import { Post } from '~/types';
 import {
@@ -15,7 +15,7 @@ import * as S from './index.style';
 
 const EditorPage = () => {
   const { id } = useParams();
-  const toast = useToast();
+  const formErrorToast = useToastMessage('빈 필드를 채워주세요!', 'error');
 
   const response = id ? postAPI.useGetPostById(id) : null;
   const createMutate = postAPI.useCreatePost();
@@ -38,13 +38,7 @@ const EditorPage = () => {
     const result = await trigger(['title', 'content']);
 
     if (result === false) {
-      toast({
-        description: '빈 필드들을 채워주세요!',
-        status: 'error',
-        duration: 5000,
-        position: 'top',
-        isClosable: true,
-      });
+      formErrorToast();
     } else {
       id === undefined
         ? createMutate.mutate({

@@ -45,7 +45,6 @@ const commentAPI = {
         return response;
       },
       onSuccess: () => {
-        confirm('댓글을 삭제했어요!');
         queryClient.invalidateQueries({
           queryKey: ['allComment'],
         });

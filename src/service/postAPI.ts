@@ -1,7 +1,7 @@
-import { useToast } from '@chakra-ui/react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { queryClient, DELETE, GET, POST, PATCH } from '~/api';
+import { useToastMessage } from '~/hooks';
 import { Post } from '~/types';
 
 const postAPI = {
@@ -27,7 +27,7 @@ const postAPI = {
   },
   useCreatePost: () => {
     const navigate = useNavigate();
-    const toast = useToast();
+    const toast = useToastMessage('포스트를 발행했어요!', 'success');
 
     return useMutation({
       mutationKey: ['createPost'],
@@ -39,20 +39,14 @@ const postAPI = {
       onSuccess: (data) => {
         if (data) {
           navigate(`/posts/${data.id}`);
-          toast({
-            description: '포스트를 정상적으로 발행했어요!',
-            status: 'success',
-            duration: 5000,
-            position: 'top',
-            isClosable: true,
-          });
+          toast();
         }
       },
     });
   },
   useDeletePost: () => {
     const navigate = useNavigate();
-    const toast = useToast();
+    const toast = useToastMessage('포스트를 삭제했어요!', 'success');
 
     return useMutation({
       mutationKey: ['deletePost'],
@@ -65,20 +59,14 @@ const postAPI = {
         queryClient.invalidateQueries({
           queryKey: ['allPost', `post_${postId}`],
         });
-        toast({
-          description: '포스트를 정상적으로 삭제했어요!',
-          status: 'success',
-          duration: 5000,
-          position: 'top',
-          isClosable: true,
-        });
+        toast();
         navigate('/');
       },
     });
   },
   useEditPost: () => {
     const navigate = useNavigate();
-    const toast = useToast();
+    const toast = useToastMessage('포스트를 발행했어요!', 'success');
 
     return useMutation({
       mutationKey: ['editPost'],
@@ -95,13 +83,7 @@ const postAPI = {
       },
       onSuccess: (_, { postId }) => {
         navigate(`/posts/${postId}`);
-        toast({
-          description: '포스트를 정상적으로 발행했어요!',
-          status: 'success',
-          duration: 5000,
-          position: 'top',
-          isClosable: true,
-        });
+        toast();
       },
     });
   },
