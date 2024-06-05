@@ -14,9 +14,11 @@ const InputCategory = ({ defaultValue = 'ROMANCE' }: InputCategoryProps) => {
     <Controller
       name={'category'}
       control={control}
-      render={({ field: { onChange } }) => (
+      defaultValue={defaultValue}
+      render={({ field: { onChange, value } }) => (
         <S.StyledRadioGroup
           defaultValue={defaultValue}
+          value={value}
           onChange={onChange}>
           {Object.entries(MOVIE_CATEGORY).map(([key, value]) => (
             <S.StyledRadio
