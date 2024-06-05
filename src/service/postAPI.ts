@@ -1,6 +1,7 @@
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { queryClient, DELETE, GET, POST, PATCH } from '~/api';
+import { END_POINT } from '~/constants';
 import { useToastMessage } from '~/hooks';
 import { Post } from '~/types';
 
@@ -9,7 +10,7 @@ const postAPI = {
     return useSuspenseQuery({
       queryKey: ['allPost'],
       queryFn: async () => {
-        const response = await GET<Post[]>('/posts');
+        const response = await GET<Post[]>(`${END_POINT.POSTS}`);
 
         return response;
       },
@@ -19,7 +20,7 @@ const postAPI = {
     return useSuspenseQuery({
       queryKey: [`post_${postId}`],
       queryFn: async () => {
-        const response = await GET<Post>(`/posts/${postId}`);
+        const response = await GET<Post>(`${END_POINT.POSTS}/${postId}`);
 
         return response;
       },
@@ -32,7 +33,7 @@ const postAPI = {
     return useMutation({
       mutationKey: ['createPost'],
       mutationFn: async ({ post }: { post: Omit<Post, 'id'> }) => {
-        const response = await POST<Post>('/posts', post);
+        const response = await POST<Post>(`${END_POINT.POSTS}`, post);
 
         return response;
       },
@@ -60,7 +61,7 @@ const postAPI = {
     return useMutation({
       mutationKey: ['deletePost'],
       mutationFn: async ({ postId }: { postId: string }) => {
-        const response = await DELETE(`/posts/${postId}`);
+        const response = await DELETE(`${END_POINT.POSTS}/${postId}`);
 
         return response;
       },
@@ -92,7 +93,10 @@ const postAPI = {
         postId: string;
         post: Partial<Post>;
       }) => {
-        const response = await PATCH<Post>(`/posts/${postId}`, post);
+        const response = await PATCH<Post>(
+          `${END_POINT.POSTS}/${postId}`,
+          post
+        );
 
         return response;
       },

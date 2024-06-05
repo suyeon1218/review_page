@@ -44,3 +44,14 @@ export const BADEG_COLOR: Record<keyof typeof MOVIE_CATEGORY, string> =
   });
 
 export const MY_ID = 'suyeon';
+
+export const END_POINT = {
+  POSTS: '/posts',
+  LIKE: '/like',
+  COMMNETS: '/comments',
+};
+
+export const ROUTER = {
+  POSTS: '/',
+  POST_DETAIL: '/posts/:id',
+};

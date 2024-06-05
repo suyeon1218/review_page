@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { queryClient, DELETE, GET, POST } from '~/api';
+import { END_POINT } from '~/constants';
 import { Like } from '~/types';
 
 const likeAPI = {
@@ -7,7 +8,9 @@ const likeAPI = {
     return useQuery({
       queryKey: ['like'],
       queryFn: async () => {
-        const response = await GET<Like[]>(`/like/?userId=${userId}`);
+        const response = await GET<Like[]>(
+          `${END_POINT.LIKE}/?userId=${userId}`
+        );
 
         return response;
       },
@@ -17,7 +20,7 @@ const likeAPI = {
     return useMutation({
       mutationKey: [`createLike`],
       mutationFn: async ({ like }: { like: Omit<Like, 'id'> }) => {
-        const response = await POST(`/like`, like);
+        const response = await POST(`${END_POINT.LIKE}`, like);
         console.log();
         return response;
       },
@@ -30,7 +33,7 @@ const likeAPI = {
     return useMutation({
       mutationKey: [`deleteLike`],
       mutationFn: async ({ likeId }: { likeId: string }) => {
-        const response = await DELETE(`/like/${likeId}`);
+        const response = await DELETE(`${END_POINT.LIKE}/${likeId}`);
 
         return response;
       },

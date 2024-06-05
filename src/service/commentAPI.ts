@@ -1,5 +1,6 @@
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query';
 import { queryClient, DELETE, GET, PATCH, POST } from '~/api';
+import { END_POINT } from '~/constants';
 import { useToastMessage } from '~/hooks';
 import { Comment } from '~/types';
 
@@ -8,7 +9,9 @@ const commentAPI = {
     return useSuspenseQuery({
       queryKey: ['allComment'],
       queryFn: async () => {
-        const response = await GET<Comment[]>(`/comments?postId=${postId}`);
+        const response = await GET<Comment[]>(
+          `${END_POINT.COMMNETS}?postId=${postId}`
+        );
 
         return response;
       },
@@ -18,7 +21,9 @@ const commentAPI = {
     return useSuspenseQuery({
       queryKey: [`comment_${commentId}`],
       queryFn: async () => {
-        const response = await GET<Comment>(`/comments/${commentId}`);
+        const response = await GET<Comment>(
+          `${END_POINT.COMMNETS}/${commentId}`
+        );
 
         return response;
       },
@@ -29,7 +34,7 @@ const commentAPI = {
     return useMutation({
       mutationKey: ['createComment'],
       mutationFn: async ({ comment }: { comment: Omit<Comment, 'id'> }) => {
-        const response = await POST('/comments', comment);
+        const response = await POST(`${END_POINT.COMMNETS}`, comment);
 
         return response;
       },
@@ -46,7 +51,7 @@ const commentAPI = {
     return useMutation({
       mutationKey: ['deleteComment'],
       mutationFn: async ({ commentId }: { commentId: string }) => {
-        const response = await DELETE(`/comments/${commentId}`);
+        const response = await DELETE(`${END_POINT.COMMNETS}/${commentId}`);
 
         return response;
       },
@@ -71,9 +76,12 @@ const commentAPI = {
         commentId: string;
         content: string;
       }) => {
-        const response = await PATCH<Comment>(`/comments/${commentId}`, {
-          content,
-        });
+        const response = await PATCH<Comment>(
+          `${END_POINT.COMMNETS}/${commentId}`,
+          {
+            content,
+          }
+        );
 
         return response;
       },
