@@ -1,5 +1,5 @@
 import { StarIcon } from '@chakra-ui/icons';
-import { MouseEvent, useState } from 'react';
+import { MouseEvent, useEffect, useState } from 'react';
 import * as S from './index.style';
 
 interface RatingProps {
@@ -9,7 +9,11 @@ interface RatingProps {
 }
 
 const Rating = ({ value = 1, readonly = true, onChange }: RatingProps) => {
-  const [rating, setRating] = useState<number>(value);
+  const [rating, setRating] = useState<number>(1);
+
+  useEffect(() => {
+    setRating(value);
+  }, [value]);
 
   const handleClickIcon = (event: MouseEvent<HTMLDivElement>) => {
     if (readonly) return;
