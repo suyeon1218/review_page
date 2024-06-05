@@ -74,10 +74,10 @@
     },
     {
       "id": "9374",
-      "title": "gㅠ ...",
-      "category": "SF",
-      "rating": 3,
-      "content": "ㄷㅁㄹㄹㄷㄹ",
+      "title": "쭉 한번씩 테스트 해보기 ",
+      "category": "ANIMATION",
+      "rating": 5,
+      "content": "필드도 채워지구 완료~",
       "date": "2024-06-04T08:06:52.730Z",
       "author": "suyeon"
     }
@@ -181,6 +181,27 @@
       "author": "suyeon",
       "postId": "ab6c",
       "date": "2024-06-05T06:55:07.441Z"
+    },
+    {
+      "id": "e648",
+      "content": "댓글 삭제도 잘되구...",
+      "author": "suyeon",
+      "postId": "9374",
+      "date": "2024-06-05T07:44:26.410Z"
+    },
+    {
+      "id": "474b",
+      "content": "Keyup 이벤트를 넣어야 할 것 같다 ",
+      "author": "suyeon",
+      "postId": "9374",
+      "date": "2024-06-05T07:44:34.460Z"
+    },
+    {
+      "id": "5d17",
+      "content": "이제 input 도 된다!",
+      "author": "suyeon",
+      "postId": "9374",
+      "date": "2024-06-05T07:49:55.924Z"
     }
   ]
 }

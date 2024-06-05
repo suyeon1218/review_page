@@ -1,4 +1,4 @@
-import { MouseEvent, useRef } from 'react';
+import { KeyboardEvent, MouseEvent, useRef } from 'react';
 import { useToastMessage } from '~/hooks';
 import * as S from './index.style';
 
@@ -11,9 +11,7 @@ const CommentInput = ({ onSubmit, defaultValue }: CommentInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const toast = useToastMessage();
 
-  const handleSubmitComment = (event: MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-
+  const handleSumbit = () => {
     if (onSubmit && inputRef && inputRef.current) {
       if (inputRef.current.value.length === 0) {
         toast({
@@ -34,16 +32,28 @@ const CommentInput = ({ onSubmit, defaultValue }: CommentInputProps) => {
     }
   };
 
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    handleSumbit();
+  };
+
+  const handleKeyUp = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleSumbit();
+    }
+  };
+
   return (
     <S.Container>
       <S.StyledInput
         minLength={1}
         maxLength={500}
         ref={inputRef}
+        onKeyUp={handleKeyUp}
         defaultValue={defaultValue}
         placeholder={'댓글을 작성해보세요!'}
       />
-      <S.StyledSubmitButton onClick={handleSubmitComment}>
+      <S.StyledSubmitButton onClick={handleClick}>
         댓글 쓰기
       </S.StyledSubmitButton>
     </S.Container>
