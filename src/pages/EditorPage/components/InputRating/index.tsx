@@ -1,5 +1,5 @@
 import { Controller, useFormContext } from 'react-hook-form';
-import Rating from '../Rating';
+import Rating from '../../../../components/Rating';
 
 interface InputRatingProps {
   defaultValue?: 1 | 2 | 3 | 4 | 5;

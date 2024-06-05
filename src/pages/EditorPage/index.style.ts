@@ -35,7 +35,7 @@ export const SubmitButton = styled(Button)`
   background-color: transparent;
 `;
 
-export const FormProperty = styled.div`
+export const FormHeader = styled.div`
   width: 100%;
 `;
 

@@ -1,22 +1,26 @@
 import { useToast } from '@chakra-ui/react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import { GoBack } from '~/components';
 import { MY_ID } from '~/constants';
 import { postAPI } from '~/service';
 import { Post } from '~/types';
+import {
+  InputContent,
+  InputCategory,
+  InputRating,
+  InputTitle,
+} from './components';
 import * as S from './index.style';
-import GoBack from '~/components/GoBack';
-import InputCategory from '~/components/InputCategory';
-import InputContent from '~/components/InputContent';
-import InputRating from '~/components/InputRating';
-import InputTitle from '~/components/InputTitle';
 
 const EditorPage = () => {
   const { id } = useParams();
   const toast = useToast();
+
   const response = id ? postAPI.useGetPostById(id) : null;
   const createMutate = postAPI.useCreatePost();
   const editMutate = postAPI.useEditPost();
+
   const methods = useForm<
     Pick<Post, 'title' | 'category' | 'rating' | 'content'>
   >({
@@ -58,7 +62,7 @@ const EditorPage = () => {
       </S.Header>
       <S.Form>
         <FormProvider {...methods}>
-          <S.FormProperty>
+          <S.FormHeader>
             <S.TitleRow>
               <InputTitle defaultValue={response?.data?.title} />
             </S.TitleRow>
@@ -68,7 +72,7 @@ const EditorPage = () => {
             <S.RatingRow>
               <InputRating defaultValue={response?.data?.rating} />
             </S.RatingRow>
-          </S.FormProperty>
+          </S.FormHeader>
           <S.FormBody>
             <InputContent defaultValue={response?.data?.content} />
           </S.FormBody>
