@@ -2,7 +2,7 @@ import { createSlice, configureStore } from '@reduxjs/toolkit';
 import { MovieCategory, Sort, View } from '~/types';
 
 interface FilterState {
-  keyword: string;
+  filterValue: string;
   category: MovieCategory[];
 }
 
@@ -15,7 +15,7 @@ interface SortState {
 }
 
 const initalFilter: FilterState = {
-  keyword: '',
+  filterValue: '',
   category: [],
 };
 
@@ -32,9 +32,9 @@ const filterSlice = createSlice({
   initialState: initalFilter,
   reducers: {
     setKeyword: (state, action) => {
-      const { keyword } = action.payload;
+      const { filterValue } = action.payload;
 
-      state.keyword = keyword;
+      state.filterValue = filterValue;
     },
     setCategory: (state, action) => {
       const { category } = action.payload;

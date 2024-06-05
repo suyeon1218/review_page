@@ -26,9 +26,9 @@ export const ListBody = styled(CardHeader)`
   justify-content: space-between;
 `;
 
-export const LeftSideContainer = styled.div``;
+export const ListBodyLeft = styled.div``;
 
-export const RightSideContainer = styled.div`
+export const ListBodyRight = styled.div`
   height: 100%;
   display: flex;
   gap: 10px;

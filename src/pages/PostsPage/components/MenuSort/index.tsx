@@ -4,7 +4,7 @@ import { MouseEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { MENU_OPTIONS } from '~/constants';
 import { RootState, setSort } from '~/store';
-import { Sort } from '~/types';
+import type { Sort } from '~/types';
 import * as S from './index.style';
 
 function isSortKey(key: string): key is Sort {

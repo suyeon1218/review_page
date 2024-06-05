@@ -1,10 +1,8 @@
 import { Link } from 'react-router-dom';
+import { Rating, CategoryBadge } from '~/components';
+import { useFilterPost, useSortPost } from '~/hooks';
 import { postAPI } from '~/service';
-import CategoryBadge from '../CategoryBadge';
-import Rating from '../Rating';
 import * as S from './index.style';
-import useFilterPost from '~/hooks/useFilterPost';
-import useSortPost from '~/hooks/useSortPost';
 
 const CardTable = () => {
   const { data: posts } = postAPI.useGetPosts();

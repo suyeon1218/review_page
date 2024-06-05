@@ -1,8 +1,7 @@
 import { ViewIcon } from '@chakra-ui/icons';
 import { Menu, MenuList, Radio, Tooltip } from '@chakra-ui/react';
 import { MouseEvent } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { MENU_OPTIONS } from '~/constants';
 import { RootState, setView } from '~/store';
 import { View } from '~/types';

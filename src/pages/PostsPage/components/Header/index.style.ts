@@ -1,13 +1,5 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 export const Header = styled.div`
   width: 90%;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray[200]};
@@ -46,7 +38,7 @@ export const HeaderRight = styled.div`
   }
 `;
 
-export const WriteButton = styled.div`
+export const IconContainer = styled.div`
   min-width: 30px;
   height: 30px;
   display: flex;
@@ -58,9 +50,4 @@ export const WriteButton = styled.div`
   &:hover {
     background-color: ${({ theme }) => theme.colors.gray[200]};
   }
-`;
-
-export const Table = styled.div`
-  width: 100%;
-  overflow-x: hidden;
 `;

@@ -1,10 +1,8 @@
 import { Link } from 'react-router-dom';
+import { CategoryBadge, Rating } from '~/components';
+import { useFilterPost, useSortPost } from '~/hooks';
 import { postAPI } from '~/service';
-import CategoryBadge from '../CategoryBadge';
-import Rating from '../Rating';
 import * as S from './index.style';
-import useFilterPost from '~/hooks/useFilterPost';
-import useSortPost from '~/hooks/useSortPost';
 
 const ListTable = () => {
   const { data: posts } = postAPI.useGetPosts();
@@ -19,20 +17,21 @@ const ListTable = () => {
     <S.Container>
       {sortedPosts.map((post) => {
         const { id, title, category, rating } = post;
+
         return (
           <S.List key={id}>
             <Link to={`/posts/${id}`}>
               <S.ListBody>
-                <S.LeftSideContainer>
+                <S.ListBodyLeft>
                   <S.ListTitle>{title}</S.ListTitle>
-                </S.LeftSideContainer>
-                <S.RightSideContainer>
+                </S.ListBodyLeft>
+                <S.ListBodyRight>
                   <Rating value={rating} />
                   <CategoryBadge
                     type={category}
                     isFullWidth={true}
                   />
-                </S.RightSideContainer>
+                </S.ListBodyRight>
               </S.ListBody>
             </Link>
           </S.List>
