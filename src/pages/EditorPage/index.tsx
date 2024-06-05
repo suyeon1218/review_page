@@ -15,7 +15,7 @@ import * as S from './index.style';
 
 const EditorPage = () => {
   const { id } = useParams();
-  const formErrorToast = useToastMessage('빈 필드를 채워주세요!', 'error');
+  const formErrorToast = useToastMessage();
 
   const response = id ? postAPI.useGetPostById(id) : null;
   const createMutate = postAPI.useCreatePost();
@@ -33,12 +33,15 @@ const EditorPage = () => {
   });
 
   const handleSubmitForm = async () => {
-    const { getValues, trigger } = methods;
+    const { getValues, trigger, getFieldState } = methods;
     const post = getValues();
     const result = await trigger(['title', 'content']);
+    const { error: titleError } = getFieldState('title');
+    const { error: contentError } = getFieldState('content');
 
     if (result === false) {
-      formErrorToast();
+      const error = titleError?.message || contentError?.message;
+      error && formErrorToast({ description: error, status: 'error' });
     } else {
       id === undefined
         ? createMutate.mutate({
