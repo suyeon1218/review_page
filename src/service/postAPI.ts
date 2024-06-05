@@ -67,7 +67,7 @@ const postAPI = {
       },
       onSuccess: (_, { postId }) => {
         queryClient.invalidateQueries({
-          queryKey: ['allPost', `post_${postId}`],
+          queryKey: [`post_${postId}`],
         });
         toast({
           description: '포스트를 삭제했어요!',
@@ -101,6 +101,9 @@ const postAPI = {
         return response;
       },
       onSuccess: (_, { postId }) => {
+        queryClient.invalidateQueries({
+          queryKey: [`post_${postId}`],
+        });
         navigate(`${ROUTER.POST_END_POINT}/${postId}`);
         toast({ description: '포스트를 발행했어요!', status: 'success' });
       },
