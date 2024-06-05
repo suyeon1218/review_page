@@ -9,25 +9,24 @@ interface CommentInputProps {
 
 const CommentInput = ({ onSubmit, defaultValue }: CommentInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const minValueErrorToast = useToastMessage(
-    '댓글은 최소 1글자 이상이어야 합니다!',
-    'error'
-  );
-  const maxValueErrorToast = useToastMessage(
-    '댓글은 최대 500글자까지 허용합니다!',
-    'error'
-  );
+  const toast = useToastMessage();
 
   const handleSubmitComment = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     if (onSubmit && inputRef && inputRef.current) {
       if (inputRef.current.value.length === 0) {
-        minValueErrorToast();
+        toast({
+          description: '댓글은 최소 1글자 이상이어야 합니다!',
+          status: 'error',
+        });
         return;
       }
       if (inputRef.current.value.length === 0) {
-        maxValueErrorToast();
+        toast({
+          description: '댓글은 최대 500글자까지 허용합니다!',
+          status: 'error',
+        });
         return;
       }
       onSubmit(inputRef.current.value);
