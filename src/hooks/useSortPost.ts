@@ -3,9 +3,9 @@ import { RootState } from '~/store';
 import { Post } from '~/types';
 import { copy } from '~/utils/copy';
 
-const useSortPost = (posts: Post[] | undefined) => {
+const useSortPost = (posts: Post[]) => {
   const { sort } = useSelector((state: RootState) => state.sort);
-  const sortedPosts = posts ? copy.copyArray(posts) : undefined;
+  const sortedPosts = copy.copyArray(posts);
 
   if (sortedPosts) {
     if (sort === 'DATE_DESCENDING') {

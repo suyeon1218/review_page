@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '~/store';
 import { Post } from '~/types';
 
-function useFilterPost(posts: Post[] | undefined) {
+function useFilterPost(posts: Post[]) {
   const { filterValue, category } = useSelector(
     (state: RootState) => state.filter
   );

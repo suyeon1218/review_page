@@ -13,17 +13,13 @@ interface PostHeaderProps {
 
 const PostItem = ({ postId }: PostHeaderProps) => {
   const navigate = useNavigate();
-  const { data: post, isError, isLoading } = postAPI.useGetPostById(postId);
+  const { data: post, isError } = postAPI.useGetPostById(postId);
   const { data: myLike } = likeAPI.useGetLikeByUserId(MY_ID);
   const myLikedPosts = myLike && myLike.find((like) => like.postId === postId);
 
   const deleteLikeMutate = likeAPI.useDeleteLikeById();
   const createLikeMutate = likeAPI.useCreateLike();
   const deletePostMutate = postAPI.useDeletePost();
-
-  if (post === undefined || isLoading) {
-    return <div>Loaindg...</div>;
-  }
 
   if (isError) {
     alert('존재하지 않는 페이지입니다');

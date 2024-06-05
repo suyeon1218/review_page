@@ -9,10 +9,6 @@ const ListTable = () => {
   const filteredPosts = useFilterPost(posts);
   const sortedPosts = useSortPost(filteredPosts);
 
-  if (sortedPosts === undefined) {
-    return <div></div>;
-  }
-
   return (
     <S.Container>
       {sortedPosts.map((post) => {

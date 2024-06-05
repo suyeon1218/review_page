@@ -10,5 +10,6 @@ export const Container = styled.div`
 
 export const Table = styled.div`
   width: 100%;
+  height: calc(100vh - 100px);
   overflow-x: hidden;
 `;

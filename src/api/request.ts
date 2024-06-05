@@ -2,13 +2,9 @@ import { AxiosResponse } from 'axios';
 import apiClient from './apiClient';
 
 export const GET = async <T>(path: string) => {
-  try {
-    const response: AxiosResponse<T> = await apiClient.get(path);
+  const response: AxiosResponse<T> = await apiClient.get(path);
 
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
+  return response.data;
 };
 
 export const POST = async <T>(path: string, data: Partial<T>) => {

@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { queryClient, DELETE, GET, POST, PATCH } from '~/api';
 import { useToastMessage } from '~/hooks';
@@ -6,7 +6,7 @@ import { Post } from '~/types';
 
 const postAPI = {
   useGetPosts: () => {
-    return useQuery({
+    return useSuspenseQuery({
       queryKey: ['allPost'],
       queryFn: async () => {
         const response = await GET<Post[]>('/posts');
@@ -16,7 +16,7 @@ const postAPI = {
     });
   },
   useGetPostById: (postId: string) => {
-    return useQuery({
+    return useSuspenseQuery({
       queryKey: [`post_${postId}`],
       queryFn: async () => {
         const response = await GET<Post>(`/posts/${postId}`);

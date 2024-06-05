@@ -1,10 +1,10 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query';
 import { queryClient, DELETE, GET, PATCH, POST } from '~/api';
 import { Comment } from '~/types';
 
 const commentAPI = {
   useGetCommentByPost: (postId: string) => {
-    return useQuery({
+    return useSuspenseQuery({
       queryKey: ['allComment'],
       queryFn: async () => {
         const response = await GET<Comment[]>(`/comments?postId=${postId}`);
@@ -14,7 +14,7 @@ const commentAPI = {
     });
   },
   useGetCommentById: (commentId: string) => {
-    return useQuery({
+    return useSuspenseQuery({
       queryKey: [`comment_${commentId}`],
       queryFn: async () => {
         const response = await GET<Comment>(`/comments/${commentId}`);
