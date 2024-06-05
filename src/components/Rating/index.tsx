@@ -25,7 +25,9 @@ const Rating = ({ value = 1, readonly = true, onChange }: RatingProps) => {
   };
 
   return (
-    <S.Container onClick={handleClickIcon}>
+    <S.Container
+      readonly={readonly}
+      onClick={handleClickIcon}>
       <S.IconContainer data-rating={1}>
         <StarIcon color={rating > 0 ? 'yellow.300' : 'gray'} />
       </S.IconContainer>

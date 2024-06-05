@@ -1,8 +1,13 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
-  display: flex;
+interface ContainerProps {
+  readonly: boolean;
+}
+
+export const Container = styled.div<ContainerProps>`
+  display: inline-flex;
   gap: 2px;
+  cursor: ${({ readonly }) => (readonly ? 'default' : 'pointer')};
 `;
 
 export const IconContainer = styled.span`
